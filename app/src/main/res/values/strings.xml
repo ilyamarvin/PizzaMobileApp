@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Joe Mama\'s Pizza</string>
+    <string name="title_menu">Меню</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_contacts">Контакты</string>
+    <string name="title_cart">Корзина</string>
+</resources>
