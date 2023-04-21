@@ -10,4 +10,5 @@ class ContactsViewModel : ViewModel() {
         value = "This is contacts Fragment"
     }
     val text: LiveData<String> = _text
+
 }
