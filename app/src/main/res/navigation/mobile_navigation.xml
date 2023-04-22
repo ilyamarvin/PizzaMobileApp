@@ -6,19 +6,6 @@
     app:startDestination="@id/navigation_menu">
 
     <fragment
-        android:id="@+id/splashScreenFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.starterscreens.SplashScreenFragment"
-        android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreenFragment_to_navigation_menu"
-            app:destination="@id/navigation_menu"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/splashScreenFragment"
-            app:popUpToInclusive="true"/>
-    </fragment>
-
-    <fragment
         android:id="@+id/navigation_menu"
         android:name="com.ilyamarvin.pizzamobileapp.ui.menu.MenuFragment"
         android:label="@string/title_bar_menu"

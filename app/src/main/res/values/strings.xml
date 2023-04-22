@@ -13,5 +13,14 @@
     <string name="text_contacts">ilya.sereda2002@mail.ru</string>
     <string name="text_about_contact">Свяжитесь с нами в любое время, и мы будем рады ответить на ваши вопросы</string>
     <string name="about_app">О приложении</string>
+    <string name="text_profile">Авторизируйтесь, чтобы получать персональные предолжения</string>
+    <string name="text_profile_desc">Сделаем подарок на день рождения, сохраним адрес доставки и расскажем об акциях</string>
+    <string name="text_profile_registration">Регистрация</string>
+    <string name="text_profile_auth">Войти</string>
+    <string name="login_telephone_number">Введите номер телефона</string>
+
+    <string name="powered_by">Powered by Ilya Sereda</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
