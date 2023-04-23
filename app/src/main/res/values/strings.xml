@@ -4,11 +4,9 @@
     <string name="title_profile">Профиль</string>
     <string name="title_contacts">Контакты</string>
     <string name="title_cart">Корзина</string>
-
-    <string name="title_bar_menu">Меню</string>
-    <string name="title_bar_profile">Профиль</string>
-    <string name="title_bar_contacts">О приложении</string>
     <string name="title_bar_cart">Ваша корзина</string>
+    <string name="title_about">О приложении</string>
+
     <string name="about_text"><b>Версия 0.1</b></string>
     <string name="text_contacts">ilya.sereda2002@mail.ru</string>
     <string name="text_about_contact">Свяжитесь с нами в любое время, и мы будем рады ответить на ваши вопросы</string>

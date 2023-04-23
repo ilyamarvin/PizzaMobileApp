@@ -1,7 +1,6 @@
 package com.ilyamarvin.pizzamobileapp
 
 import android.os.Bundle
-import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -14,7 +13,7 @@ import com.ilyamarvin.pizzamobileapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navView: BottomNavigationView
+    private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setBottomNavView()
-
-        navView = binding.navView
+        bottomNavView = binding.navView
 
         navController = findNavController(R.id.nav_host_fragment_activity_main)
 
@@ -37,11 +34,11 @@ class MainActivity : AppCompatActivity() {
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        bottomNavView.setupWithNavController(navController)
 
     }
 
-    private fun setBottomNavView() {
-
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

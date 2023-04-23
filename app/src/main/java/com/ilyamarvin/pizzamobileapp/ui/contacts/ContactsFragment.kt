@@ -1,45 +1,72 @@
 package com.ilyamarvin.pizzamobileapp.ui.contacts
 
-import android.R
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.ilyamarvin.pizzamobileapp.R
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentContactsBinding
-import com.ilyamarvin.pizzamobileapp.ui.about.AboutFragment
 
 
 class ContactsFragment : Fragment() {
 
-    private var _binding: FragmentContactsBinding? = null
-
-    private val binding get() = _binding!!
-
-    private var navController: NavController ?= null
+    private lateinit var binding: FragmentContactsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val contactsViewModel =
-            ViewModelProvider(this).get(ContactsViewModel::class.java)
+    ): View? {
 
-        _binding = FragmentContactsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentContactsBinding.inflate(inflater, container, false)
 
+        binding.buttonEmail.setOnClickListener {
+            val email = Intent(
+                Intent.ACTION_SENDTO, Uri.fromParts("mailto", "ilya.sereda2002@mail.ru", null)
+            )
+            startActivity(Intent.createChooser(email, "Выберите приложение для отправки письма"));
+        }
 
-        return root
+        binding.buttonAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_contacts_to_navigation_about)
+        }
+
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//    private var _binding: FragmentContactsBinding? = null
+//
+//    private val binding get() = _binding!!
+//
+//    private var navController: NavController ?= null
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//
+//        val contactsViewModel =
+//            ViewModelProvider(this).get(ContactsViewModel::class.java)
+//
+//        _binding = FragmentContactsBinding.inflate(inflater, container, false)
+//        val root: View = binding.root
+//
+//        return root
+//    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        binding.buttonAbout.setOnClickListener {
+//        }
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 }
