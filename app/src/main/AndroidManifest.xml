@@ -29,7 +29,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait">
         </activity>
 
