@@ -52,5 +52,15 @@
     <string name="text_continue">Продолжить</string>
     <string name="text_order">Оформить заказ</string>
     <string name="addresses_empty">Список адресов пуст</string>
+    <string name="ship_to_error_empty">Пожалуйста, выберите адрес для доставки!</string>
+    <string name="edit_btn_text">Изменить</string>
+    <string name="add_address_street_title_text">Город, улица/проспект, дом</string>
+    <string name="add_address_btn_text">Сохранить</string>
+    <string name="address">Адрес</string>
+    <string name="floor">Этаж</string>
+    <string name="apartment">Квартира</string>
+    <string name="entrance">Подъезд</string>
+    <string name="intercom">Домофон</string>
+    <string name="comment">Комментарий к заказу</string>
 
 </resources>

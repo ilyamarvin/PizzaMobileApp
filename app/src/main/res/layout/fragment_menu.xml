@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.menu.MenuFragment">
 
+
+
     <TextView
         android:id="@+id/text_menu"
         android:layout_width="match_parent"

@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@id/order_history_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_hello" />
+        app:layout_constraintTop_toBottomOf="@id/profile_hello" />
 
     <Button
         android:id="@+id/order_history_button"
@@ -45,17 +45,17 @@
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/white_gray"
         android:drawableEnd="@drawable/arrow_forward_24"
+        android:gravity="start|center"
         android:text="@string/order_history_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:cornerRadius="18dp"
-        android:gravity="start|center"
-        app:layout_constraintBottom_toTopOf="@+id/delivery_addresses_button"
+        app:layout_constraintBottom_toTopOf="@id/delivery_addresses_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_number" />
+        app:layout_constraintTop_toBottomOf="@id/profile_number" />
 
     <Button
         android:id="@+id/delivery_addresses_button"
@@ -64,17 +64,17 @@
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/white_gray"
         android:drawableEnd="@drawable/arrow_forward_24"
+        android:gravity="start|center"
         android:text="@string/delivery_addresses_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:cornerRadius="18dp"
-        android:gravity="start|center"
-        app:layout_constraintBottom_toTopOf="@+id/logout_button"
+        app:layout_constraintBottom_toTopOf="@id/logout_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_history_button" />
+        app:layout_constraintTop_toBottomOf="@id/order_history_button" />
 
     <Button
         android:id="@+id/logout_button"
@@ -83,17 +83,17 @@
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/green_light"
         android:drawableEnd="@drawable/ic_exit_24"
+        android:gravity="start|center"
         android:text="@string/logout_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:cornerRadius="18dp"
-        android:gravity="start|center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delivery_addresses_button" />
+        app:layout_constraintTop_toBottomOf="@id/delivery_addresses_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
