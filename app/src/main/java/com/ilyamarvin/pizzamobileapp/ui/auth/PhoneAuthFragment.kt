@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -19,6 +20,7 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.ilyamarvin.pizzamobileapp.R
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentPhoneAuthBinding
 import java.util.concurrent.TimeUnit
 
@@ -40,6 +42,11 @@ class PhoneAuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPhoneAuthBinding.inflate(inflater, container, false)
+
+        binding.buttonProfileAuth.setOnClickListener {
+            findNavController().navigate(R.id.action_phoneAuthFragment_to_confirmationFragment)
+        }
+
         return binding.root
     }
 

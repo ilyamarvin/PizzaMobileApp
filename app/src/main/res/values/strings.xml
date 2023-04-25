@@ -62,5 +62,6 @@
     <string name="entrance">Подъезд</string>
     <string name="intercom">Домофон</string>
     <string name="comment">Комментарий к заказу</string>
+    <string name="orders_empty">Вы еще ни разу не делали заказ в нашей пиццерии :(</string>
 
 </resources>

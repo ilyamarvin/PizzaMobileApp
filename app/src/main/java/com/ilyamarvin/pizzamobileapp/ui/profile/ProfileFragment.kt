@@ -16,7 +16,6 @@ import com.ilyamarvin.pizzamobileapp.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,13 +27,22 @@ class ProfileFragment : Fragment() {
             ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         binding.orderHistoryButton.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_profile_to_editProfileFragment)
+            findNavController().navigate(R.id.action_navigation_profile_to_orderHistoryFragment)
         }
 
-        return root
+        binding.deliveryAddressesButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_deliveryAddressesFragment)
+        }
+
+        binding.logoutButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_phoneAuthFragment)
+        }
+
+
+
+        return binding.root
     }
 
     override fun onDestroyView() {
