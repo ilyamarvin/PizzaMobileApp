@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "504595877157",
+    "firebase_url": "https://joe-mama-s-pizza-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "joe-mama-s-pizza",
+    "storage_bucket": "joe-mama-s-pizza.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504595877157:android:5ef97887a85515c579decc",
+        "android_client_info": {
+          "package_name": "com.ilyamarvin.pizzamobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504595877157-mrtb7rjf23q7t51rciqvpe0acq9otlsf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdmye_ymMgVP4BwrXmxtamQorFfe-k8sE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504595877157-mrtb7rjf23q7t51rciqvpe0acq9otlsf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
