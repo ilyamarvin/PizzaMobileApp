@@ -24,13 +24,12 @@ class MenuFragment : Fragment() {
             ViewModelProvider(this).get(MenuViewModel::class.java)
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         val textView: TextView = binding.textMenu
         menuViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order_summary_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/gray"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/order_number_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@+id/order_date_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="№ 123" />
+
+        <TextView
+            android:id="@+id/order_date_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_number_tv"
+            tools:text="30 февраля 2023 г. 18:00" />
+
+        <ImageView
+            android:id="@+id/order_card_dotted_divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@id/order_delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_date_tv"
+            app:srcCompat="@drawable/divided_line" />
+
+        <TextView
+            android:id="@+id/order_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/order_date_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_1"
+            tools:text="@string/order_delivery" />
+
+        <TextView
+            android:id="@+id/order_delivery_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_delivery"
+            tools:text="г. Москва, ул. Кукуева, д. 25 " />
+
+        <ImageView
+            android:id="@+id/order_card_dotted_divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_delivery_address"
+            app:srcCompat="@drawable/divided_line" />
+
+        <TextView
+            android:id="@+id/order_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_positions_list"
+            tools:text="@string/order_position" />
+
+        <TextView
+            android:id="@+id/order_positions_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_position"
+            tools:text="1 * Курица Терияки" />
+
+        <ImageView
+            android:id="@+id/order_card_dotted_divider_3"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@id/order_sum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_positions_list"
+            app:srcCompat="@drawable/divided_line" />
+
+        <TextView
+            android:id="@+id/order_sum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_4"
+            app:layout_constraintEnd_toStartOf="@id/order_sum_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_3"
+            tools:text="@string/order_sum" />
+
+        <TextView
+            android:id="@+id/order_sum_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/order_sum"
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_3"
+            tools:text="705 Р" />
+
+        <ImageView
+            android:id="@+id/order_card_dotted_divider_4"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_sum"
+            app:srcCompat="@drawable/divided_line" />
+
+        <Button
+            android:id="@+id/order_repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_4"
+            tools:text="@string/order_repeat" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

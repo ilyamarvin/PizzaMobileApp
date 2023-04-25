@@ -18,13 +18,37 @@
     <string name="login_telephone_number">Введите номер телефона</string>
 
     <string name="powered_by">Powered by Ilya Sereda</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="no_items_in_cart_text">Ваша корзина пуста, добавьте понравившийся товар из “Меню”.</string>
     <string name="cart_empty_oops">Ой, пусто!</string>
     <string name="profile_hello">Здравствуйте, Имя!</string>
     <string name="profile_number">+7 (800) 555-35-35</string>
     <string name="order_history_text">История заказов</string>
     <string name="delivery_addresses_text">Адреса доставки</string>
+    <string name="name">Имя</string>
+    <string name="update_info">Сохранить изменения</string>
+    <string name="email">Электронная почта</string>
+    <string name="profile_edit_name">Имя</string>
+    <string name="profile_edit_number">Телефон</string>
+    <string name="profile_edit_email">Электронная почта</string>
+    <string name="profile_edit_birthdate">Дата рождения</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="edit_address_btn_text">Изменить адрес</string>
+    <string name="address_text">г. Москва</string>
+    <string name="add_address">Добавить адрес доставки</string>
+    <string name="logout_text">Выйти из профиля</string>
+    <string name="order_delivery">Доставка</string>
+    <string name="order_position">Заказанные позиции</string>
+    <string name="order_sum">Сумма заказа</string>
+    <string name="order_repeat">Повторить заказ</string>
+    <string name="registration_title">Вы наш новый пользователь! Заполните данные о себе</string>
+    <string name="registration_desc">Вы сможете посмотреть историю заказов, сохранять адреса доставки и многое другое</string>
+    <string name="register_account">Зарегистрироваться</string>
+    <string name="confirmation_continue">Продолжить</string>
+    <string name="confirmation_text">Код из СМС</string>
+    <string name="confirmation_edit_text">Введите код из СМС</string>
+    <string name="confirmation_title">Теперь введите код из СМС</string>
+    <string name="confirmation_desc">Код отправлен сообщением на введенный номер телефона</string>
+    <string name="text_continue">Продолжить</string>
 
 </resources>
