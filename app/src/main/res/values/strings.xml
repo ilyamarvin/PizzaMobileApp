@@ -50,5 +50,7 @@
     <string name="confirmation_title">Теперь введите код из СМС</string>
     <string name="confirmation_desc">Код отправлен сообщением на введенный номер телефона</string>
     <string name="text_continue">Продолжить</string>
+    <string name="text_order">Оформить заказ</string>
+    <string name="addresses_empty">Список адресов пуст</string>
 
 </resources>
