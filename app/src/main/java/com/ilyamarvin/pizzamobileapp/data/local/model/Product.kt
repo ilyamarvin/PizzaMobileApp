@@ -1,14 +1,13 @@
-package com.ilyamarvin.pizzamobileapp.data.local.models
+package com.ilyamarvin.pizzamobileapp.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "products")
+@Entity(tableName = "product")
 data class Product(
     @PrimaryKey(autoGenerate = true)
     val productId: Int,
     val name: String,
-    val category: Category,
     val description: String,
     val price: Int,
     val linkImage: String
