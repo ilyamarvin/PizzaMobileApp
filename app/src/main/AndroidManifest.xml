@@ -29,7 +29,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait">
         </activity>
 
