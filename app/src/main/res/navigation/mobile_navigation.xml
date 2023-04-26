@@ -9,7 +9,11 @@
         android:id="@+id/navigation_menu"
         android:name="com.ilyamarvin.pizzamobileapp.ui.menu.MenuFragment"
         android:label="@string/title_menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_navigation_menu_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -70,9 +74,9 @@
     </fragment>
     <fragment
         android:id="@+id/deliveryAddressesFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.addresses.DeliveryAddressesFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.addresses.AddressesFragment"
         android:label="fragment_delivery_addresses"
-        tools:layout="@layout/fragment_delivery_addresses" >
+        tools:layout="@layout/fragment_addresses" >
         <action
             android:id="@+id/action_deliveryAddressesFragment_to_navigation_profile"
             app:destination="@id/navigation_profile" />
@@ -130,15 +134,36 @@
         <action
             android:id="@+id/action_selectAddressFragment_to_navigation_cart"
             app:destination="@id/navigation_cart" />
+        <action
+            android:id="@+id/action_selectAddressFragment_to_orderSuccessFragment"
+            app:destination="@id/orderSuccessFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditAddressFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.cart.order.AddEditAddressFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.addresses.AddEditAddressFragment"
         android:label="fragment_add_edit_address"
         tools:layout="@layout/fragment_add_edit_address" >
         <action
             android:id="@+id/action_addEditAddressFragment_to_deliveryAddressesFragment"
             app:destination="@id/deliveryAddressesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSuccessFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.cart.order.OrderSuccessFragment"
+        android:label="fragment_order_success"
+        tools:layout="@layout/fragment_order_success" >
+        <action
+            android:id="@+id/action_orderSuccessFragment_to_navigation_menu"
+            app:destination="@id/navigation_menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.menu.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_productDetailsFragment_to_navigation_menu"
+            app:destination="@id/navigation_menu" />
     </fragment>
 
 </navigation>

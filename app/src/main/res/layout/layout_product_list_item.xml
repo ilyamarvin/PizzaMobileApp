@@ -7,13 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:clickable="false"
-    android:focusable="true"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
-    app:strokeColor="@color/gray"
-    app:strokeWidth="1dp">
+    android:layout_marginEnd="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,12 +34,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:lines="2"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/cart_product_desc"
-            app:layout_constraintEnd_toStartOf="@id/cart_product_delete_btn"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/product_image_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Курица Терияки" />
@@ -55,81 +48,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:lines="4"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/product_image_view"
             app:layout_constraintTop_toBottomOf="@id/cart_product_title"
             tools:text="Соус чесночный, сыр моцарелла, куриное филе, помидоры, перец болгарский, лук красный, соус “Терияки”, кунжут" />
 
-        <ImageView
-            android:id="@+id/cart_product_delete_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_delete_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cart_product_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/gray" />
-
-        <TextView
+        <Button
             android:id="@+id/cart_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/cart_product_quantity_buttons_layout"
             app:layout_constraintStart_toEndOf="@+id/product_image_view"
             app:layout_constraintTop_toBottomOf="@+id/cart_product_desc"
             tools:text="1000 ₽" />
-
-        <LinearLayout
-            android:id="@+id/cart_product_quantity_buttons_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/layout_background_rounded_corners"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cart_product_price"
-            app:layout_constraintTop_toBottomOf="@id/cart_product_desc">
-
-            <ImageButton
-                android:id="@+id/cart_product_minus_btn"
-                android:layout_width="36dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:background="@null"
-                app:srcCompat="@drawable/ic_remove_24" />
-
-            <TextView
-                android:id="@+id/cart_product_quantity_text_View"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/green_light"
-                android:gravity="center_horizontal|center_vertical"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:text="1" />
-
-            <ImageButton
-                android:id="@+id/cart_product_plus_btn"
-                android:layout_width="36dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:background="@null"
-                app:srcCompat="@drawable/ic_add_24" />
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

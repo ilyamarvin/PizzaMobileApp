@@ -63,5 +63,20 @@
     <string name="intercom">Домофон</string>
     <string name="comment">Комментарий к заказу</string>
     <string name="orders_empty">Вы еще ни разу не делали заказ в нашей пиццерии :(</string>
+    <string name="profile_edit_day">День</string>
+    <string name="profile_edit_month">Месяц</string>
+    <string name="profile_edit_age">Год</string>
+    <string name="birthdate_desc">Введите дату рождения</string>
+    <string name="text_loading">Загрузка...</string>
+    <string name="code_verify_error_text">Неверный код!</string>
+    <string name="text_check_code">Проверить</string>
+    <string name="success_label">Успешно</string>
+    <string name="order_success_desc">Спасибо за заказ!</string>
+    <string name="redirect_home_timer">Перенаправление на домашнюю страницу через</string>
+    <string name="back_to_home_text">Вернуться на домашнюю страницу</string>
+    <string name="menu_pizza">Пицца</string>
+    <string name="menu_hot_appetizers">Горячие закуски</string>
+    <string name="menu_drinks">Напитки</string>
+    <string name="add_product_to_cart_text">Добавить в корзину</string>
 
 </resources>

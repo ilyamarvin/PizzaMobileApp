@@ -5,8 +5,8 @@
     android:id="@+id/order_summary_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
     android:clickable="true"
     android:focusable="true"
@@ -49,20 +49,20 @@
             android:id="@+id/order_card_dotted_divider_1"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/divided_line"
             app:layout_constraintBottom_toTopOf="@id/order_delivery"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_date_tv"
-            app:srcCompat="@drawable/divided_line" />
+            app:layout_constraintTop_toBottomOf="@id/order_date_tv" />
 
         <TextView
             android:id="@+id/order_delivery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            app:layout_constraintBottom_toTopOf="@id/order_date_tv"
+            app:layout_constraintBottom_toTopOf="@id/order_delivery_address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_1"
@@ -84,22 +84,23 @@
             android:id="@+id/order_card_dotted_divider_2"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/divided_line"
+            app:layout_constraintBottom_toTopOf="@id/order_position"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_delivery_address"
-            app:srcCompat="@drawable/divided_line" />
+            app:layout_constraintTop_toBottomOf="@id/order_delivery_address" />
 
         <TextView
             android:id="@+id/order_position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_2"
+            app:layout_constraintBottom_toTopOf="@id/order_positions_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_positions_list"
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_2"
             tools:text="@string/order_position" />
 
         <TextView
@@ -118,13 +119,13 @@
             android:id="@+id/order_card_dotted_divider_3"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/divided_line"
             app:layout_constraintBottom_toTopOf="@id/order_sum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_positions_list"
-            app:srcCompat="@drawable/divided_line" />
+            app:layout_constraintTop_toBottomOf="@id/order_positions_list" />
 
         <TextView
             android:id="@+id/order_sum"
@@ -148,18 +149,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/order_sum"
             app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_3"
-            tools:text="705 Р" />
+            tools:text="705 ₽" />
 
         <ImageView
             android:id="@+id/order_card_dotted_divider_4"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/divided_line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_sum"
-            app:srcCompat="@drawable/divided_line" />
+            app:layout_constraintTop_toBottomOf="@id/order_sum" />
 
         <Button
             android:id="@+id/order_repeat"

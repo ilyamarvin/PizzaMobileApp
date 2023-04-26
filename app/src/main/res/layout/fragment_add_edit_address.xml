@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.order.AddEditAddressFragment">
+    tools:context=".ui.profile.addresses.AddEditAddressFragment">
 
-    <!--    <include-->
-    <!--        android:id="@+id/loader_layout"-->
-    <!--        layout="@layout/layout_circular_loader"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
+    <include
+        android:id="@+id/loader_layout"
+        layout="@layout/layout_circular_loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -26,7 +30,7 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/streetAddOutlinedTextField"
+                android:id="@+id/street_add_edit_text_field"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,8 +44,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPostalAddress|textMultiLine"
-                    android:text="@string/add_address_street_title_text" />
+                    android:inputType="textPostalAddress|textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,10 +58,10 @@
                 app:layout_constraintBottom_toTopOf="@id/linear_layout_entrance_intercom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/streetAddOutlinedTextField">
+                app:layout_constraintTop_toBottomOf="@id/street_add_edit_text_field">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/apartmentAddOutlinedTextField"
+                    android:id="@+id/apartment_add_edit_text_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -69,13 +72,12 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="@string/apartment" />
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/floorAddOutlinedTextField"
+                    android:id="@+id/floor_add_edit_text_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -86,8 +88,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="@string/floor" />
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,13 +100,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/commentAddOutlinedTextField"
+                app:layout_constraintBottom_toTopOf="@id/comment_add_edit_text_field"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_layout_apartment_floor">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/entranceAddOutlinedTextField"
+                    android:id="@+id/entrance_add_edit_text_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -116,13 +117,12 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="@string/entrance" />
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/intercomAddOutlinedTextField"
+                    android:id="@+id/intercom_add_edit_text_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -133,15 +133,14 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="@string/intercom" />
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/commentAddOutlinedTextField"
+                android:id="@+id/comment_add_edit_text_field"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,8 +153,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:text="@string/comment"/>
+                    android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -165,7 +163,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <Button
-        android:id="@+id/add_address_save_btn"
+        android:id="@+id/add_edit_address_save_btn"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
