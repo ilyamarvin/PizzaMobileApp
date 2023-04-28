@@ -5,9 +5,8 @@
     android:id="@+id/product_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp">
+    android:layout_margin="16dp"
+    android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,46 +27,44 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/cart_product_title"
+            android:id="@+id/product_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/cart_product_desc"
+            app:layout_constraintBottom_toTopOf="@id/product_desc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/product_image_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Курица Терияки" />
 
         <TextView
-            android:id="@+id/cart_product_desc"
+            android:id="@+id/product_desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/product_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/product_image_view"
-            app:layout_constraintTop_toBottomOf="@id/cart_product_title"
+            app:layout_constraintTop_toBottomOf="@id/product_title"
             tools:text="Соус чесночный, сыр моцарелла, куриное филе, помидоры, перец болгарский, лук красный, соус “Терияки”, кунжут" />
 
         <Button
-            android:id="@+id/cart_product_price"
+            android:id="@+id/product_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/product_image_view"
-            app:layout_constraintTop_toBottomOf="@+id/cart_product_desc"
+            app:layout_constraintTop_toBottomOf="@+id/product_desc"
             tools:text="1000 ₽" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

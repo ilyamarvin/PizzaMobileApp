@@ -5,9 +5,7 @@
     android:id="@+id/product_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
+    android:layout_margin="16dp"
     android:clickable="false"
     android:focusable="true"
     app:cardCornerRadius="20dp"
@@ -21,7 +19,7 @@
         android:layout_margin="10dp">
 
         <ImageView
-            android:id="@+id/product_image_view"
+            android:id="@+id/cart_product_image_view"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginStart="8dp"
@@ -46,7 +44,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/cart_product_desc"
             app:layout_constraintEnd_toStartOf="@id/cart_product_delete_btn"
-            app:layout_constraintStart_toEndOf="@id/product_image_view"
+            app:layout_constraintStart_toEndOf="@id/cart_product_image_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Курица Терияки" />
 
@@ -60,7 +58,7 @@
             android:lines="4"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/product_image_view"
+            app:layout_constraintStart_toEndOf="@+id/cart_product_image_view"
             app:layout_constraintTop_toBottomOf="@id/cart_product_title"
             tools:text="Соус чесночный, сыр моцарелла, куриное филе, помидоры, перец болгарский, лук красный, соус “Терияки”, кунжут" />
 
@@ -86,7 +84,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/product_image_view"
+            app:layout_constraintStart_toEndOf="@+id/cart_product_image_view"
             app:layout_constraintTop_toBottomOf="@+id/cart_product_desc"
             tools:text="1000 ₽" />
 

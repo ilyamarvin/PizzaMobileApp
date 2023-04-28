@@ -1,24 +1,22 @@
 package com.ilyamarvin.pizzamobileapp.ui.menu
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
-//class MenuViewModel(application: Application, val testText: String) : AndroidViewModel(application) {
-//
-//    private val _text = MutableLiveData<String>().apply {
-//        value = "This is Menu Fragment"
-//    }
-//    val text: LiveData<String> = _text
-//}
+import com.ilyamarvin.pizzamobileapp.model.Product
 
 class MenuViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is contacts Fragment"
-    }
-    val text: LiveData<String> = _text
+    private val menuRepository = MenuRepository()
 
+    private val _allProducts = MutableLiveData<List<Product>>()
+    val allProducts: LiveData<List<Product>> = _allProducts
+
+    private fun getProducts() {
+        menuRepository.getProducts(_allProducts)
+    }
+
+    init {
+        getProducts()
+    }
 }
