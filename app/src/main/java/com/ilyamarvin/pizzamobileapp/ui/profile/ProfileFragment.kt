@@ -28,6 +28,12 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.orderHistoryButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_profile_to_orderHistoryFragment)
         }
@@ -36,13 +42,6 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_profile_to_deliveryAddressesFragment)
         }
 
-        binding.logoutButton.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_profile_to_phoneAuthFragment)
-        }
-
-
-
-        return binding.root
     }
 
     override fun onDestroyView() {

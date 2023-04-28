@@ -25,10 +25,8 @@ class CartFragment : Fragment() {
             ViewModelProvider(this).get(CartViewModel::class.java)
 
         _binding = FragmentCartBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

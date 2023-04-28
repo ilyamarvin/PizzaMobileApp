@@ -1,13 +1,10 @@
 package com.ilyamarvin.pizzamobileapp.ui
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
-import com.ilyamarvin.pizzamobileapp.MainActivity
 import com.ilyamarvin.pizzamobileapp.R
 
 class SplashScreenActivity : AppCompatActivity() {

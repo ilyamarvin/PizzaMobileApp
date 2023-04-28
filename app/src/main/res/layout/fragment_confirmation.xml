@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.confirmation.ConfirmationFragment">
+    tools:context=".ui.auth.confirmation.ConfirmationFragment">
 
     <include
         android:id="@+id/loader_layout"
@@ -74,21 +74,6 @@
                     android:maxLength="6" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/code_verify_error"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/code_verify_error_text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="?attr/colorError"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/confirmation_code_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

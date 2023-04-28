@@ -25,11 +25,12 @@ class MenuFragment : Fragment() {
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
 
-        val textView: TextView = binding.textMenu
-        menuViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     override fun onDestroyView() {

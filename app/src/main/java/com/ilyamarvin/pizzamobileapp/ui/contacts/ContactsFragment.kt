@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.ilyamarvin.pizzamobileapp.R
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentContactsBinding
@@ -14,15 +15,22 @@ import com.ilyamarvin.pizzamobileapp.databinding.FragmentContactsBinding
 
 class ContactsFragment : Fragment() {
 
-    private lateinit var binding: FragmentContactsBinding
+    private var _binding: FragmentContactsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        binding = FragmentContactsBinding.inflate(inflater, container, false)
+        _binding = FragmentContactsBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.buttonEmail.setOnClickListener {
             val email = Intent(
@@ -34,39 +42,5 @@ class ContactsFragment : Fragment() {
         binding.buttonAbout.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_contacts_to_navigation_about)
         }
-
-        return binding.root
     }
-
-//    private var _binding: FragmentContactsBinding? = null
-//
-//    private val binding get() = _binding!!
-//
-//    private var navController: NavController ?= null
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//
-//        val contactsViewModel =
-//            ViewModelProvider(this).get(ContactsViewModel::class.java)
-//
-//        _binding = FragmentContactsBinding.inflate(inflater, container, false)
-//        val root: View = binding.root
-//
-//        return root
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        binding.buttonAbout.setOnClickListener {
-//        }
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
 }

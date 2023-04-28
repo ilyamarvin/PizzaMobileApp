@@ -36,24 +36,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/ship_to_error_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/ship_to_error_empty"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@android:drawable/stat_notify_error"
-            app:drawableTint="?attr/colorError"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ship_to_addresses_recycler_view"
-            app:layout_constraintVertical_bias="1" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ship_to_addresses_recycler_view"
             android:layout_width="match_parent"
@@ -62,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/layout_address_card" />
+            tools:listitem="@layout/layout_cart_address_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
