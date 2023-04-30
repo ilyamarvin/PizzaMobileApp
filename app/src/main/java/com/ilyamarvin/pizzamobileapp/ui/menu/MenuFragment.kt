@@ -46,7 +46,7 @@ class MenuFragment : Fragment() {
         productRecyclerView.adapter = menuAdapter
 
         menuViewModel.allProducts.observe(viewLifecycleOwner, Observer {
-            menuAdapter.loadProducts(it)
+            menuAdapter.setProductsData(it)
             binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         })
 

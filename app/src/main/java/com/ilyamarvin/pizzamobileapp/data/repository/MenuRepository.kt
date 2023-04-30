@@ -1,6 +1,7 @@
-package com.ilyamarvin.pizzamobileapp.ui.menu
+package com.ilyamarvin.pizzamobileapp.data.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,15 +23,20 @@ class MenuRepository {
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    val productItems: List<Product> = snapshot.children.map { dataSnapshot ->
-                        dataSnapshot.getValue(Product::class.java)!!
+                    if (snapshot.exists()) {
+                        val productItems: List<Product> =
+                            snapshot.children.map { dataSnapshot ->
+                                dataSnapshot.getValue(Product::class.java)!!
+                            }
+                        productLiveData.postValue(productItems)
                     }
-                    productLiveData.postValue(productItems)
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.w(TAG, "loadPost:onCancelled", error.toException())
                 }
             })
+
     }
 }
