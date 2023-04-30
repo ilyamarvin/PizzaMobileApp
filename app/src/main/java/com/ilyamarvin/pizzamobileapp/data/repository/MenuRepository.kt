@@ -1,5 +1,6 @@
 package com.ilyamarvin.pizzamobileapp.data.repository
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,11 +9,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.ilyamarvin.pizzamobileapp.model.Product
+import com.ilyamarvin.pizzamobileapp.data.model.Product
 
 private const val TAG = "MenuRepository"
 
-class MenuRepository {
+class MenuRepository(context: Context) {
 
     private val database = Firebase.database
     private val productsReference = database.getReference("products/pizza")
@@ -37,6 +38,5 @@ class MenuRepository {
                     Log.w(TAG, "loadPost:onCancelled", error.toException())
                 }
             })
-
     }
 }
