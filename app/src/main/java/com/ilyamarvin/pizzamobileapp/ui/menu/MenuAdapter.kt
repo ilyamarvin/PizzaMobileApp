@@ -13,33 +13,34 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
     private val productList = mutableListOf<Product>()
 
-    inner class MenuViewHolder(val binding: LayoutProductCardBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class MenuViewHolder(val binding: LayoutProductCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
-        return MenuViewHolder(
-            LayoutProductCardBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun getItemCount(): Int {
-        return productList.size
-    }
-
-    override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
-        with(holder) {
-            binding.productTitle.text = productList[position].name
-            binding.productDesc.text = productList[position].description
-            binding.productBtn.text = productList[position].price
+        fun bind(product: Product) {
+            binding.productTitle.text = product.name
+            binding.productDesc.text = product.description
+            binding.productBtn.text = product.price
             Glide.with(binding.productImageView)
-                .load(productList[position].link)
+                .load(product.link)
                 .skipMemoryCache(true)
                 .into(binding.productImageView)
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
+        val binding = LayoutProductCardBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return MenuViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int = productList.size
+
+
+    override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
+
+        val product: Product = productList[position]
+        holder.bind(product)
 
         holder.binding.root.setOnClickListener {
             holder.binding.root.findNavController()
@@ -47,10 +48,10 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
         }
     }
 
-    fun loadProducts(userList: List<Product>) {
+    fun setProductsData(userList: List<Product>) {
 
-        this.productList.clear()
-        this.productList.addAll(userList)
+        productList.clear()
+        productList.addAll(userList)
         notifyDataSetChanged()
 
     }
