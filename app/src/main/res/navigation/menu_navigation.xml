@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.ilyamarvin.pizzamobileapp.ui.menu.ProductDetailsFragment"
-        android:label="fragment_product_details"
+        android:label="@string/title_menu_desc"
         tools:layout="@layout/fragment_product_details" />
 
 </navigation>
