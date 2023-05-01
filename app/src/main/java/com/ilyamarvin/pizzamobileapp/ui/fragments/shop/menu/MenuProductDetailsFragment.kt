@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentProductDetailsBinding
-import com.ilyamarvin.pizzamobileapp.ui.fragments.shop.productdetail.MenuProductDetailsFragmentArgs
 
 class MenuProductDetailsFragment : Fragment() {
 
