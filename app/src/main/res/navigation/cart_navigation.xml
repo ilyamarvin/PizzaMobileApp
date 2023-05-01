@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/selectAddressFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.cart.order.SelectAddressFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.cart.SelectAddressFragment"
         android:label="fragment_select_address"
         tools:layout="@layout/fragment_select_address" >
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/orderSuccessFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.cart.order.OrderSuccessFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.cart.OrderSuccessFragment"
         android:label="fragment_order_success"
         tools:layout="@layout/fragment_order_success" />
 

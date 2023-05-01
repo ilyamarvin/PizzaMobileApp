@@ -26,7 +26,7 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
             productName.text = product.name
             productDesc.text = product.description
-            productPriceCartBtn.text = product.price
+            productPriceCartBtn.text = product.price.toString().plus(" ₽")
             Glide.with(productImage)
                 .load(product.link)
                 .skipMemoryCache(true)
@@ -58,10 +58,10 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
         holder.bind(product)
     }
 
-    fun setProductsData(userList: List<Product>) {
+    fun setProductsData(menuProductList: List<Product>) {
 
         productList.clear()
-        productList.addAll(userList)
+        productList.addAll(menuProductList)
         notifyDataSetChanged()
 
     }

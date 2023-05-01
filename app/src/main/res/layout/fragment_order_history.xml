@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.orders.OrderHistoryFragment">
+    tools:context=".ui.profile.OrderHistoryFragment">
 
     <include
         android:id="@+id/loader_layout"

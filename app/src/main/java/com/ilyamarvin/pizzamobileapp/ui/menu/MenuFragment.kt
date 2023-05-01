@@ -56,11 +56,11 @@ class MenuFragment : Fragment() {
     }
 
     private fun bindLiveData() {
-        menuViewModel.productList.observe(viewLifecycleOwner, Observer {
+        menuViewModel.productList.observe(viewLifecycleOwner) {
             menuViewModel.updateCurrentProductList(it)
             menuAdapter.setProductsData(it)
             binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
-        })
+        }
     }
 
     private fun bindProductRecyclerView() {
@@ -74,14 +74,15 @@ class MenuFragment : Fragment() {
             override fun onClick(product: Product) {
                 findNavController().navigate(
                     MenuFragmentDirections.actionNavigationMenuToProductDetailsFragment(
-                        product.id!!
+                        product.id
                     )
                 )
             }
 
             override fun onAddToCartClick(product: Product) {
-                Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_LONG)
-                    .show()
+//                menuViewModel.addProductToCart(product.id!!)
+//                Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_SHORT)
+//                    .show()
             }
         }
     }

@@ -79,4 +79,15 @@
     <string name="menu_drinks">Напитки</string>
     <string name="add_product_to_cart_text">Добавить в корзину</string>
 
+    <string name="verification_complete">Проверка прошла успешно</string>
+    <string name="verification_failed_try_again">Проверка не прошла, повторите еще раз</string>
+    <string name="quota_exceeded">Превышен запрос СМС, попробуйте позже</string>
+    <string name="code_sent">СМС отправлено</string>
+    <string name="phone_auth_success">Проверка прошла успешно</string>
+    <string name="invalid_code">Неверный код из СМС</string>
+    <string name="code_will_be_sent">СМС с кодом будет выслано</string>
+    <string name="invalid_phone_number">Неверный номер телефона</string>
+    <string name="title_menu_desc">Подробнее о продукте</string>
+    <string name="text_go_for_order">Перейти в меню</string>
+
 </resources>

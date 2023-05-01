@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.profile.orders
+package com.ilyamarvin.pizzamobileapp.ui.profile
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -14,19 +14,11 @@ class OrderHistoryFragment : Fragment() {
         fun newInstance() = OrderHistoryFragment()
     }
 
-    private lateinit var viewModel: OrderHistoryViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_order_history, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OrderHistoryViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

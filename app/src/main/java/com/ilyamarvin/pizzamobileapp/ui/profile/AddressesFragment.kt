@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.profile.addresses
+package com.ilyamarvin.pizzamobileapp.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,8 +17,6 @@ class AddressesFragment : Fragment() {
     companion object {
         fun newInstance() = AddressesFragment()
     }
-
-    private lateinit var viewModel: AddressesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,8 +1,6 @@
 package com.ilyamarvin.pizzamobileapp.data.repository
 
-import android.content.Context
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -13,7 +11,7 @@ import com.ilyamarvin.pizzamobileapp.data.model.Product
 
 private const val TAG = "MenuRepository"
 
-class MenuRepository(context: Context) {
+class MenuRepository {
 
     private val database = Firebase.database
     private val productsReference = database.getReference("products/pizza")

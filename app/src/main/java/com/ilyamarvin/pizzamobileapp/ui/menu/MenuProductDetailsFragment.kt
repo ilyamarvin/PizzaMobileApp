@@ -42,7 +42,7 @@ class MenuProductDetailsFragment : Fragment() {
         getViewModel()
         product = menuViewModel.getProduct(productId)
         bindProductView()
-        bindAddProductButton()
+//        bindAddProductButton()
 
     }
 
@@ -59,20 +59,20 @@ class MenuProductDetailsFragment : Fragment() {
     private fun bindProductView() {
         binding.productDetailsTitle.text = product.name
         binding.productDetailsDesc.text = product.description
-        binding.productDetailsPrice.text = product.price
+        binding.productDetailsPrice.text = product.price.toString().plus(" ₽")
         Glide.with(binding.productDetailsImageView)
             .load(product.link)
             .skipMemoryCache(true)
             .into(binding.productDetailsImageView)
     }
 
-    private fun bindAddProductButton() {
-        binding.addProductDetailsToCartBtn.setOnClickListener {
-//            cartViewModel.addProductToCart(product.id)
-            Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_LONG)
-                .show()
-            this.findNavController().popBackStack()
-        }
-    }
+//    private fun bindAddProductButton() {
+//        binding.addProductDetailsToCartBtn.setOnClickListener {
+//            menuViewModel.addProductToCart(product.id!!)
+//            Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_LONG)
+//                .show()
+//            this.findNavController().popBackStack()
+//        }
+//    }
 
 }
