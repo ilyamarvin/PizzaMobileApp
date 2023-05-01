@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.auth
+package com.ilyamarvin.pizzamobileapp.ui.fragments.profile.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

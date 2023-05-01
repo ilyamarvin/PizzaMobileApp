@@ -89,5 +89,6 @@
     <string name="invalid_phone_number">Неверный номер телефона</string>
     <string name="title_menu_desc">Подробнее о продукте</string>
     <string name="text_go_for_order">Перейти в меню</string>
+    <string name="phone_auth_title">Вход в профиль</string>
 
 </resources>

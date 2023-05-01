@@ -1,12 +1,13 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.auth
+package com.ilyamarvin.pizzamobileapp.ui.fragments.profile.auth
 
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -17,15 +18,17 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.ilyamarvin.pizzamobileapp.databinding.FragmentConfirmationBinding
+import com.ilyamarvin.pizzamobileapp.R
+import com.ilyamarvin.pizzamobileapp.databinding.FragmentPhoneAuthBinding
 import java.util.concurrent.TimeUnit
 
-class ConfirmationFragment : Fragment() {
+class PhoneAuthFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
 
-    private var _binding: FragmentConfirmationBinding? = null
-    private val binding get() = _binding!!
+    private var _binding: FragmentPhoneAuthBinding? = null
+    private val binding: FragmentPhoneAuthBinding
+        get() = _binding!!
 
     private var verificationInProgress = false
     private var storedVerificationId: String? = ""
@@ -33,11 +36,17 @@ class ConfirmationFragment : Fragment() {
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentPhoneAuthBinding.inflate(inflater, container, false)
 
-        _binding = FragmentConfirmationBinding.inflate(inflater, container, false)
+        binding.confirmationTitle.visibility = View.GONE
+        binding.confirmationDesc.visibility = View.GONE
+        binding.confirmationCodeTextInput.visibility = View.GONE
+        binding.buttonCheckCode.visibility = View.GONE
+        binding.loaderLayout.loaderCard.visibility = View.GONE
 
         return binding.root
     }
@@ -45,13 +54,35 @@ class ConfirmationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.confirmationBtn.setOnClickListener {
-            val code = binding.confirmationCodeText.editText?.text.toString()
+        savedInstanceState?.let { onViewStateRestored(it) }
+
+        binding.buttonCheckNumber.setOnClickListener {
+            if (!validatePhoneNumber()) {
+                return@setOnClickListener
+            }
+
+            binding.confirmationTitle.visibility = View.VISIBLE
+            binding.confirmationDesc.visibility = View.VISIBLE
+            binding.confirmationCodeTextInput.visibility = View.VISIBLE
+            binding.buttonCheckCode.visibility = View.VISIBLE
+
+            binding.imageviewProfile.visibility = View.GONE
+            binding.textAuthProfileDesc.visibility = View.GONE
+            binding.textPhoneAuth.visibility = View.GONE
+            binding.phoneNumberTextInput.visibility = View.GONE
+            binding.buttonCheckNumber.visibility = View.GONE
+
+            startPhoneNumberVerification("+7" + (binding.phoneNumberEditText.text.toString()).drop(1))
+        }
+        binding.buttonCheckCode.setOnClickListener {
+            val code = binding.confirmationCodeEditText.text.toString()
             if (TextUtils.isEmpty(code)) {
-                binding.confirmationCodeText.error = "Поле не может быть пустым"
+                binding.confirmationCodeEditText.error = "Поле не может быть пустым"
+                return@setOnClickListener
             }
             verifyPhoneNumberWithCode(storedVerificationId, code)
         }
+
         auth = Firebase.auth
 
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -68,10 +99,10 @@ class ConfirmationFragment : Fragment() {
                 verificationInProgress = false
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
-                    binding.confirmationCodeText.error = "Неверный код"
+                    binding.phoneNumberEditText.error = "Неправильный номер телефона"
                 } else if (e is FirebaseTooManyRequestsException) {
                     Snackbar.make(
-                        view, "Срок действия кода истек",
+                        view, "Слишком много запросов",
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
@@ -86,6 +117,16 @@ class ConfirmationFragment : Fragment() {
                 storedVerificationId = verificationId
                 resendToken = token
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser = auth.currentUser
+
+        if (verificationInProgress && validatePhoneNumber()) {
+            startPhoneNumberVerification(binding.phoneNumberEditText.text.toString())
         }
     }
 
@@ -109,12 +150,13 @@ class ConfirmationFragment : Fragment() {
             .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
-
         verificationInProgress = true
     }
 
     private fun verifyPhoneNumberWithCode(verificationId: String?, code: String) {
         val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
+
+        binding.loaderLayout.loaderCard.visibility = View.VISIBLE
         signInWithPhoneAuthCredential(credential)
     }
 
@@ -122,28 +164,41 @@ class ConfirmationFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
+
+                    binding.loaderLayout.loaderCard.visibility = View.GONE
                     Log.d(TAG, "signInWithCredential:success")
 
                     val user = task.result?.user
+                    findNavController().navigate(R.id.action_phoneAuthFragment_to_navigation_profile)
                 } else {
+
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
 
-                        binding.confirmationCodeText.error = "Неверный код"
+                        binding.confirmationCodeEditText.error = "Неверный код"
                     }
+
                 }
             }
+    }
 
+    private fun validatePhoneNumber(): Boolean {
+        val phoneNumber = binding.phoneNumberEditText.text.toString()
+        if (TextUtils.isEmpty(phoneNumber)) {
+            binding.phoneNumberEditText.error = "Вы не ввели номер телефона"
+            return false
+        }
+
+        return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
-        private const val TAG = "ConfirmationFragment"
+        private const val TAG = "PhoneAuthFragment"
         private const val KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress"
-        private const val STATE_INITIALIZED = 1
-        private const val STATE_VERIFY_FAILED = 3
-        private const val STATE_VERIFY_SUCCESS = 4
-        private const val STATE_CODE_SENT = 2
-        private const val STATE_SIGNIN_FAILED = 5
-        private const val STATE_SIGNIN_SUCCESS = 6
     }
 }

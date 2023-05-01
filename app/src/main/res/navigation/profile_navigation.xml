@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_navigation"
-    app:startDestination="@id/navigation_profile">
+    app:startDestination="@id/phoneAuthFragment">
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -45,29 +45,22 @@
 
     <fragment
         android:id="@+id/phoneAuthFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.auth.PhoneAuthFragment"
-        android:label="fragment_phone_auth"
-        tools:layout="@layout/fragment_phone_auth" />
-
-    <fragment
-        android:id="@+id/confirmationFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.auth.ConfirmationFragment"
-        android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation">
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.auth.PhoneAuthFragment"
+        android:label="@string/phone_auth_title"
+        tools:layout="@layout/fragment_phone_auth" >
         <action
-            android:id="@+id/action_confirmationFragment_to_phoneAuthFragment"
-            app:destination="@id/phoneAuthFragment" />
+            android:id="@+id/action_phoneAuthFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_phoneAuthFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.auth.RegistrationFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.auth.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration">
-        <action
-            android:id="@+id/action_registrationFragment_to_confirmationFragment"
-            app:destination="@id/confirmationFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_registration"/>
 
     <fragment
         android:id="@+id/addEditAddressFragment"
