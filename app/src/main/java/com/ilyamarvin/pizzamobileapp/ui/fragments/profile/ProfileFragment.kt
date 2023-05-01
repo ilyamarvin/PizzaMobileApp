@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.profile
+package com.ilyamarvin.pizzamobileapp.ui.fragments.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ilyamarvin.pizzamobileapp.R
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentProfileBinding
-import com.ilyamarvin.pizzamobileapp.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 

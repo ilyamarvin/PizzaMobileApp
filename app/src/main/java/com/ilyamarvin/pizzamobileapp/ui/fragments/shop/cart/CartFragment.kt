@@ -1,16 +1,12 @@
-package com.ilyamarvin.pizzamobileapp.ui.cart
+package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.ilyamarvin.pizzamobileapp.adapter.CartListAdapter
-import com.ilyamarvin.pizzamobileapp.adapter.MenuAdapter
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentCartBinding
-import com.ilyamarvin.pizzamobileapp.viewmodel.MenuViewModel
+import com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu.MenuViewModel
 
 class CartFragment : Fragment() {
 
@@ -19,7 +15,7 @@ class CartFragment : Fragment() {
 
     //    private lateinit var cartViewModel: CartViewModel
     private lateinit var cartViewModel: MenuViewModel
-    private lateinit var cartListAdapter: CartListAdapter
+    private lateinit var cartListAdapter: CartAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,

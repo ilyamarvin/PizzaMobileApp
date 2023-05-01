@@ -1,5 +1,6 @@
-package com.ilyamarvin.pizzamobileapp.adapter
+package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,10 +8,12 @@ import com.bumptech.glide.Glide
 import com.ilyamarvin.pizzamobileapp.databinding.LayoutProductCardBinding
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 
+
 class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
-    private val productList = mutableListOf<Product>()
-    lateinit var onClickListener: OnClickListener
+    lateinit var onProductClickListener: OnProductClickListener
+
+    private var productList = emptyList<Product>()
 
     inner class MenuViewHolder(val binding: LayoutProductCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -28,16 +31,16 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
             productDesc.text = product.description
             productPriceCartBtn.text = product.price.toString().plus(" ₽")
             Glide.with(productImage)
-                .load(product.link)
+                .load(product.image)
                 .skipMemoryCache(true)
                 .into(productImage)
 
             productCard.setOnClickListener {
-                onClickListener.onClick(product)
+                onProductClickListener.onProductClick(product)
             }
 
             productPriceCartBtn.setOnClickListener {
-                onClickListener.onAddToCartClick(product)
+                onProductClickListener.onAddToCartClick(product)
             }
         }
     }
@@ -58,16 +61,15 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
         holder.bind(product)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setProductsData(menuProductList: List<Product>) {
-
-        productList.clear()
-        productList.addAll(menuProductList)
+        productList = menuProductList
         notifyDataSetChanged()
 
     }
 
-    interface OnClickListener {
-        fun onClick(product: Product)
+    interface OnProductClickListener {
+        fun onProductClick(product: Product)
         fun onAddToCartClick(product: Product)
     }
 }

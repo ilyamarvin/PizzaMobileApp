@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.viewmodel
+package com.ilyamarvin.pizzamobileapp.ui.fragments.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

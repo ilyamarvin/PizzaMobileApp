@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui
+package com.ilyamarvin.pizzamobileapp.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.auth
+package com.ilyamarvin.pizzamobileapp.ui.fragments.auth
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentPhoneAuthBinding
-import com.ilyamarvin.pizzamobileapp.viewmodel.PhoneAuthViewModel
 
 class PhoneAuthFragment : Fragment() {
 

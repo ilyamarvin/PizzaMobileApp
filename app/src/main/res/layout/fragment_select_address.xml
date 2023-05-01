@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.SelectAddressFragment">
+    tools:context=".ui.fragments.shop.cart.select_address.SelectAddressFragment">
 
     <include
         android:id="@+id/loader_layout"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_contacts"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.contacts.ContactsFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.contacts.ContactsFragment"
         android:label="@string/title_contacts"
         tools:layout="@layout/fragment_contacts">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_about"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.contacts.AboutFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.contacts.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
 

@@ -2,14 +2,15 @@
 //
 //import android.content.Context
 //import androidx.lifecycle.LiveData
-//import com.ilyamarvin.pizzamobileapp.data.RoomAppDatabase
-//import com.ilyamarvin.pizzamobileapp.data.dao.CartDao
+//import androidx.lifecycle.MutableLiveData
 //import com.ilyamarvin.pizzamobileapp.data.model.CartItem
+//import com.ilyamarvin.pizzamobileapp.data.model.Product
 //
 //
 //class CartRepository(context: Context) {
 //
-//    private val cartDao = RoomAppDatabase.getInstance(context).cartDao()
+//    private val mutableCart = MutableLiveData<List<CartItem>>()
+//    private val mutableTotalPrice = MutableLiveData<Int>()
 //
 //    fun getProductCart(): LiveData<List<CartItem>> = cartDao.getProductCart()
 //

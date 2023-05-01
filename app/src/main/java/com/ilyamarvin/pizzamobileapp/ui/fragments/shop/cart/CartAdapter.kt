@@ -1,16 +1,14 @@
-package com.ilyamarvin.pizzamobileapp.adapter
+package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.cart
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.databinding.LayoutCartProductCardBinding
-import java.util.LinkedList
 
-class CartListAdapter : RecyclerView.Adapter<CartListAdapter.CartListViewHolder>() {
+class CartAdapter : RecyclerView.Adapter<CartAdapter.CartListViewHolder>() {
 
     private val cartProductList = mutableListOf<CartItem>()
     lateinit var onCartClickListener: OnCartClickListener
@@ -26,16 +24,16 @@ class CartListAdapter : RecyclerView.Adapter<CartListAdapter.CartListViewHolder>
 
         fun bind(cartItem: CartItem) {
 
-            cartProductName.text = cartItem.name
-            cartProductDesc.text = cartItem.description
-            cartProductPrice.text = cartItem.price.toString().plus(" ₽")
+            cartProductName.text = cartItem.product.name
+            cartProductDesc.text = cartItem.product.description
+            cartProductPrice.text = cartItem.product.price.toString().plus(" ₽")
             Glide.with(cartProductImage)
-                .load(cartItem.link)
+                .load(cartItem.product.image)
                 .skipMemoryCache(true)
                 .into(cartProductImage)
 
             cartProductDeleteBtn.setOnClickListener {
-                onCartClickListener.removeItemFromCart(cartItem.productId)
+                onCartClickListener.removeItemFromCart(cartItem.product.id)
             }
         }
     }
@@ -53,6 +51,7 @@ class CartListAdapter : RecyclerView.Adapter<CartListAdapter.CartListViewHolder>
         holder.bind(cartProductList[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setCartItems(cartItems: List<CartItem>) {
         cartProductList.clear()
         cartProductList.addAll(cartItems)

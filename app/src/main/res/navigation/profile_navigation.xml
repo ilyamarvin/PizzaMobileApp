@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.ProfileFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -23,13 +23,13 @@
 
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.EditProfileFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
 
     <fragment
         android:id="@+id/deliveryAddressesFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.AddressesFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.AddressesFragment"
         android:label="fragment_delivery_addresses"
         tools:layout="@layout/fragment_addresses">
         <action
@@ -39,19 +39,19 @@
 
     <fragment
         android:id="@+id/orderHistoryFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.OrderHistoryFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.OrderHistoryFragment"
         android:label="fragment_order_history"
         tools:layout="@layout/fragment_order_history" />
 
     <fragment
         android:id="@+id/phoneAuthFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.auth.PhoneAuthFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.auth.PhoneAuthFragment"
         android:label="fragment_phone_auth"
         tools:layout="@layout/fragment_phone_auth" />
 
     <fragment
         android:id="@+id/confirmationFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.auth.ConfirmationFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.auth.ConfirmationFragment"
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation">
         <action
@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.auth.RegistrationFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.auth.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration">
         <action
@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/addEditAddressFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.profile.AddEditAddressFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.AddEditAddressFragment"
         android:label="fragment_add_edit_address"
         tools:layout="@layout/fragment_add_edit_address" />
 

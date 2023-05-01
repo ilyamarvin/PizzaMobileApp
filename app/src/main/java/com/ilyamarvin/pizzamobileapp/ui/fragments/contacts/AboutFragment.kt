@@ -1,14 +1,11 @@
-package com.ilyamarvin.pizzamobileapp.ui.contacts
+package com.ilyamarvin.pizzamobileapp.ui.fragments.contacts
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.ilyamarvin.pizzamobileapp.R
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentAboutBinding
-import com.ilyamarvin.pizzamobileapp.databinding.FragmentConfirmationBinding
 
 class AboutFragment : Fragment() {
 
