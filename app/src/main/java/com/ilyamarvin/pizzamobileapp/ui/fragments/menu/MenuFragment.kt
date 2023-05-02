@@ -39,20 +39,12 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bindLiveData()
-        bindClickListeners()
-
-    }
-
-    private fun bindLiveData() {
         menuViewModel.products.observe(viewLifecycleOwner) {
             menuViewModel.updateCurrentProductList(it)
             menuAdapter.setProductsData(it)
             binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         }
-    }
 
-    private fun bindClickListeners() {
         menuAdapter.onProductClickListener = object : MenuAdapter.OnProductClickListener {
             override fun onProductClick(product: Product) {
                 findNavController().navigate(

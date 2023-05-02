@@ -36,6 +36,7 @@
     <string name="edit_address_btn_text">Изменить адрес</string>
     <string name="address_text">г. Москва</string>
     <string name="add_address">Добавить адрес доставки</string>
+    <string name="delivery_address">Адрес доставки</string>
     <string name="logout_text">Выйти из профиля</string>
     <string name="order_delivery">Доставка</string>
     <string name="order_position">Заказанные позиции</string>

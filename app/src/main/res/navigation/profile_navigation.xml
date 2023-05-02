@@ -24,13 +24,13 @@
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.EditProfileFragment"
-        android:label="fragment_edit_profile"
+        android:label="@string/edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
 
     <fragment
         android:id="@+id/deliveryAddressesFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.AddressesFragment"
-        android:label="fragment_delivery_addresses"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.address.AddressesFragment"
+        android:label="@string/delivery_addresses_text"
         tools:layout="@layout/fragment_addresses">
         <action
             android:id="@+id/action_deliveryAddressesFragment_to_addEditAddressFragment"
@@ -40,13 +40,19 @@
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.OrderHistoryFragment"
-        android:label="fragment_order_history"
+        android:label="@string/order_history_text"
         tools:layout="@layout/fragment_order_history" />
 
     <fragment
         android:id="@+id/addEditAddressFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.AddEditAddressFragment"
-        android:label="fragment_add_edit_address"
-        tools:layout="@layout/fragment_add_edit_address" />
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.address.AddEditAddressFragment"
+        android:label="@string/delivery_address"
+        tools:layout="@layout/fragment_add_edit_address">
+
+        <argument
+            android:name="addressId"
+            app:argType="integer" />
+
+    </fragment>
 
 </navigation>
