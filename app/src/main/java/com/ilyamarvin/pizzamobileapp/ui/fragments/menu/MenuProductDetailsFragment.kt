@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu
+package com.ilyamarvin.pizzamobileapp.ui.fragments.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,7 +19,7 @@ class MenuProductDetailsFragment : Fragment() {
 
     private val args by navArgs<MenuProductDetailsFragmentArgs>()
 
-    private val menuProductDetailsViewModel: MenuViewModel by activityViewModels()
+    private val menuViewModel: MenuViewModel by activityViewModels()
 
     private var productId = 0
 
@@ -36,7 +36,7 @@ class MenuProductDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         productId = args.productId
-        val product = menuProductDetailsViewModel.getProduct(productId)
+        val product = menuViewModel.getProduct(productId)
         bindProductView(product)
         bindAddProductButton(product)
 
@@ -54,7 +54,7 @@ class MenuProductDetailsFragment : Fragment() {
 
     private fun bindAddProductButton(product: Product) {
         binding.addProductDetailsToCartBtn.setOnClickListener {
-//            menuProductDetailsViewModel.addProductToCart(product.id)
+//            menuViewModel.addProductToCart(product)
             Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_LONG)
                 .show()
             this.findNavController().popBackStack()

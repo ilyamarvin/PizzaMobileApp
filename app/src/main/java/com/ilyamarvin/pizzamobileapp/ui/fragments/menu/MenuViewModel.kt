@@ -1,9 +1,8 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu
+package com.ilyamarvin.pizzamobileapp.ui.fragments.menu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.data.repository.MenuRepository
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 
@@ -32,10 +31,5 @@ class MenuViewModel : ViewModel() {
 
     fun updateCurrentProductList(productList: List<Product>) {
         currentProductList = productList
-    }
-
-    fun addProductToCart(product: Product) {
-        val cartItem = CartItem(product, 1)
-//        menuRepository.addToCart(cartItem)
     }
 }

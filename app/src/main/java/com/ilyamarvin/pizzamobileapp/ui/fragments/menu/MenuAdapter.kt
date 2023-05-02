@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu
+package com.ilyamarvin.pizzamobileapp.ui.fragments.menu
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

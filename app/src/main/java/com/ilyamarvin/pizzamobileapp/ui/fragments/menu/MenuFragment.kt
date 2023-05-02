@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu
+package com.ilyamarvin.pizzamobileapp.ui.fragments.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -63,7 +63,8 @@ class MenuFragment : Fragment() {
             }
 
             override fun onAddToCartClick(product: Product) {
-                menuViewModel.addProductToCart(product)
+//                menuViewModel.addProductToCart(product.id)
+
                 Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_SHORT)
                     .show()
             }

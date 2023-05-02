@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu.MenuFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.menu.MenuFragment"
         android:label="@string/title_menu"
         tools:layout="@layout/fragment_menu">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/productDetailsFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.shop.menu.MenuProductDetailsFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.menu.MenuProductDetailsFragment"
         android:label="@string/title_menu_desc"
         tools:layout="@layout/fragment_product_details" >
         <argument

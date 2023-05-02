@@ -67,7 +67,7 @@
     <string name="profile_edit_month">Месяц</string>
     <string name="profile_edit_age">Год</string>
     <string name="birthdate_desc">Введите дату рождения</string>
-    <string name="text_loading">Загрузка...</string>
+    <string name="text_loading">Загрузка…</string>
     <string name="code_verify_error_text">Неверный код!</string>
     <string name="text_check_code">Проверить</string>
     <string name="success_label">Успешно</string>
@@ -89,6 +89,10 @@
     <string name="invalid_phone_number">Неверный номер телефона</string>
     <string name="title_menu_desc">Подробнее о продукте</string>
     <string name="text_go_for_order">Перейти в меню</string>
-    <string name="phone_auth_title">Вход в профиль</string>
+
+    <string name="title_activity_login">Вход в профиль</string>
+    <string name="title_activity_registration">Регистрация в приложении</string>
+    <string name="title_activity_confirmation">Подтверждение номера телефона</string>
+
 
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_navigation"
-    app:startDestination="@id/phoneAuthFragment">
+    app:startDestination="@id/navigation_profile">
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -42,25 +42,6 @@
         android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.OrderHistoryFragment"
         android:label="fragment_order_history"
         tools:layout="@layout/fragment_order_history" />
-
-    <fragment
-        android:id="@+id/phoneAuthFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.auth.PhoneAuthFragment"
-        android:label="@string/phone_auth_title"
-        tools:layout="@layout/fragment_phone_auth" >
-        <action
-            android:id="@+id/action_phoneAuthFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_phoneAuthFragment_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/registrationFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.auth.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration"/>
 
     <fragment
         android:id="@+id/addEditAddressFragment"
