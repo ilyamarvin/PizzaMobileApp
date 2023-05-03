@@ -51,7 +51,7 @@ class AddressesFragment : Fragment() {
             override fun onAddressClick(address: Address) {
                 findNavController().navigate(
                     AddressesFragmentDirections.actionDeliveryAddressesFragmentToAddEditAddressFragment(
-                        address.id
+                        address.id.toString()
                     )
                 )
             }
@@ -64,7 +64,7 @@ class AddressesFragment : Fragment() {
         binding.addressesBtnAdd.setOnClickListener {
             findNavController().navigate(
                 AddressesFragmentDirections.actionDeliveryAddressesFragmentToAddEditAddressFragment(
-                    0
+                    ""
                 )
             )
         }

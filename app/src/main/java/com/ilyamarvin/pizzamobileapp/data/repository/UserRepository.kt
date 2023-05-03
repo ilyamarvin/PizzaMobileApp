@@ -12,6 +12,7 @@ import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.data.model.Order
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.data.model.User
+import java.util.UUID
 
 class UserRepository {
 
@@ -43,7 +44,7 @@ class UserRepository {
 
     fun getAddresses(addressLiveData: MutableLiveData<List<Address>>) {
         ref.child("address")
-            .orderByChild("id")
+            .orderByChild("street")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val addresses: List<Address> =
@@ -70,20 +71,13 @@ class UserRepository {
 
         ref.child("address").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var maxId: Int = snapshot.childrenCount.toInt()
-                    maxId++
 
-                    val address =
-                        Address(maxId, street!!, apartment, floor, entrance, intercom, comment)
+                val id = UUID.randomUUID()
 
-                    ref.child("address").child(maxId.toString()).setValue(address)
-                } else {
-                    val address =
-                        Address(1, street!!, apartment, floor, entrance, intercom, comment)
+                val address = Address(id.toString(), street!!, apartment, floor, entrance, intercom, comment)
 
-                    ref.child("address").child(1.toString()).setValue(address)
-                }
+                ref.child("address").child(id.toString()).setValue(address)
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -94,7 +88,7 @@ class UserRepository {
     }
 
     fun updateAddress(
-        id: Int?,
+        id: String,
         street: String?,
         apartment: Int?,
         floor: Int?,
@@ -110,11 +104,11 @@ class UserRepository {
             "intercom" to intercom!!,
             "comment" to comment!!
         )
-        ref.child("address").child(id.toString()).updateChildren(map)
+        ref.child("address").child(id).updateChildren(map)
     }
 
-    fun deleteAddress(id: Int?) {
-        ref.child("address").child(id.toString()).removeValue()
+    fun deleteAddress(id: String) {
+        ref.child("address").child(id).removeValue()
     }
 
     fun getOrders(orderLiveData: MutableLiveData<List<Order>>) {
@@ -165,7 +159,7 @@ class UserRepository {
 
     fun getCartItems(cartProductLiveData: MutableLiveData<List<CartItem>>) {
         ref.child("cart")
-            .orderByChild("id")
+            .orderByChild("product/id")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -182,8 +176,8 @@ class UserRepository {
             })
     }
 
-    fun deleteCartItem(id: Int?) {
-        ref.child("cart").child(id.toString()).removeValue()
+    fun deleteCartItem(id: String) {
+        ref.child("cart").child(id).removeValue()
     }
 
     fun clearCart() {
@@ -194,18 +188,13 @@ class UserRepository {
 
         ref.child("cart").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var maxId: Int = snapshot.childrenCount.toInt()
-                    maxId++
 
-                    val cartItem = CartItem(maxId, product)
+                val id = UUID.randomUUID()
 
-                    ref.child("cart").child(maxId.toString()).setValue(cartItem)
-                } else {
-                    val cartItem = CartItem(1, product)
+                val cartItem = CartItem(id.toString(), product)
 
-                    ref.child("cart").child(1.toString()).setValue(cartItem)
-                }
+                ref.child("cart").child(id.toString()).setValue(cartItem)
+
             }
 
             override fun onCancelled(error: DatabaseError) {

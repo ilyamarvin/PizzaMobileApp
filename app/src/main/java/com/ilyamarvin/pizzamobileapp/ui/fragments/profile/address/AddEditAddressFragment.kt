@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.ilyamarvin.pizzamobileapp.data.model.Address
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentAddEditAddressBinding
 import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.ProfileViewModel
+import java.util.UUID
 
 class AddEditAddressFragment : Fragment() {
 
@@ -21,7 +22,7 @@ class AddEditAddressFragment : Fragment() {
 
     private val profileViewModel: ProfileViewModel by activityViewModels()
 
-    private var addressId = 0
+    private var addressId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +39,7 @@ class AddEditAddressFragment : Fragment() {
 
         addressId = args.addressId
 
-        if (addressId != 0) {
+        if (addressId.isNotEmpty()) {
             val address = profileViewModel.getAddress(addressId)
             bindAddressEditView(address)
             bindEditAddressButton(address)

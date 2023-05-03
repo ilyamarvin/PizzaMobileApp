@@ -9,6 +9,7 @@ import com.ilyamarvin.pizzamobileapp.data.model.Order
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.data.model.User
 import com.ilyamarvin.pizzamobileapp.data.repository.UserRepository
+import java.util.UUID
 
 class ProfileViewModel : ViewModel() {
 
@@ -47,7 +48,7 @@ class ProfileViewModel : ViewModel() {
         userRepository.getAddresses(_address)
     }
 
-    fun getAddress(id: Int): Address {
+    fun getAddress(id: String): Address {
         return currentAddressList.first {
             it.id == id
         }
@@ -58,7 +59,7 @@ class ProfileViewModel : ViewModel() {
     }
 
     fun updateAddress(
-        id: Int?,
+        id: String,
         street: String?,
         apartment: Int?,
         floor: Int?,

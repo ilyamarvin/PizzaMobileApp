@@ -50,7 +50,7 @@
         tools:layout="@layout/fragment_add_edit_address">
         <argument
             android:name="addressId"
-            app:argType="integer" />
+            app:argType="string" />
     </fragment>
 
 </navigation>
