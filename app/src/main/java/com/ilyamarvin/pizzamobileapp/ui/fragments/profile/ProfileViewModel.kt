@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.ilyamarvin.pizzamobileapp.data.model.Address
 import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.data.model.Order
+import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.data.model.User
 import com.ilyamarvin.pizzamobileapp.data.repository.UserRepository
 
@@ -88,6 +89,13 @@ class ProfileViewModel : ViewModel() {
         userRepository.getOrders(_order)
     }
 
+    fun addOrder(
+        totalPrice: Int, orderDate: String, address: Address,
+        orderProducts: List<Product>
+    ) {
+        userRepository.addOrder(totalPrice, orderDate, address, orderProducts)
+    }
+
     fun updateCurrentOrderItemList(orderList: List<Order>) {
         currentOrderList.clear()
         currentOrderList.addAll(orderList)
@@ -102,22 +110,15 @@ class ProfileViewModel : ViewModel() {
         currentCartItemList.addAll(cartItemList)
     }
 
-    fun deleteCartItem(id: Int?) {
-        userRepository.deleteCartItem(id)
+    fun deleteCartItem(cartItem: CartItem) {
+        userRepository.deleteCartItem(cartItem.id)
     }
 
     fun clearCart() {
         userRepository.clearCart()
     }
 
-//    fun addCartItem(
-//        name: String?,
-//        apartment: Int?,
-//        floor: Int?,
-//        entrance: Int?,
-//        intercom: Int?,
-//        comment: String?
-//    ) {
-//        userRepository.addAddress(street, apartment, floor, entrance, intercom, comment)
-//    }
+    fun addCartItem(product: Product) {
+        userRepository.addCartItem(product)
+    }
 }

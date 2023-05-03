@@ -5,11 +5,9 @@
     android:id="@+id/cart_product_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:clickable="false"
-    android:focusable="true"
+    android:layout_margin="8dp"
     app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
+    app:cardElevation="3dp"
     app:strokeColor="@color/gray"
     app:strokeWidth="1dp">
 

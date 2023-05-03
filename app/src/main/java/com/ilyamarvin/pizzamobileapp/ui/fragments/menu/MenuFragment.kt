@@ -58,15 +58,11 @@ class MenuFragment : Fragment() {
             }
 
             override fun onAddToCartClick(product: Product) {
-                TODO("Not yet implemented")
-            }
+                profileViewModel.addCartItem(product)
 
-//            override fun onAddToCartClick(cartItem: CartItem) {
-//                Toast.makeText(context, "hello", Toast.LENGTH_LONG).show()
-////                profileViewModel.addCartItem(cartItem.id)
-//
-//                Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_SHORT)
-//                    .show()
+                Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ import com.ilyamarvin.pizzamobileapp.databinding.LayoutOrderCardBinding
 
 class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>() {
 
-    private var ordersList = emptyList<Order>()
+    private var ordersList = mutableListOf<Order>()
 
     inner class OrdersViewHolder(val binding: LayoutOrderCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -29,8 +29,15 @@ class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>() {
             orderNumber.text = "№ ${order.id.toString()}"
             orderDate.text = order.date
             orderAddress.text = order.address.street
-            orderProducts.text = order.products.toString()
-            orderSum.text = "${order.sum.toString()} ₽"
+
+            val products: ArrayList<String> = ArrayList()
+            for (product in order.products) {
+                products.add(product.name)
+
+            }
+
+            orderProducts.text = products.toString().replace("[", "").replace("]", "")
+            orderSum.text = "${order.total.toString()} ₽"
 
         }
     }
@@ -53,7 +60,8 @@ class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun setOrdersData(orderList: List<Order>) {
-        ordersList = orderList
+        ordersList.clear()
+        ordersList.addAll(orderList)
         notifyDataSetChanged()
 
     }

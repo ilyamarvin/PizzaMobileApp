@@ -9,21 +9,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ilyamarvin.pizzamobileapp.R
+import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentCartBinding
-import com.ilyamarvin.pizzamobileapp.ui.fragments.menu.MenuViewModel
+import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.ProfileViewModel
 
 class CartFragment : Fragment() {
 
     private lateinit var binding: FragmentCartBinding
-
     private lateinit var cartAdapter: CartAdapter
 
-    private val menuViewModel: MenuViewModel by activityViewModels()
+    private val profileViewModel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         binding = FragmentCartBinding.inflate(inflater, container, false)
@@ -39,40 +38,35 @@ class CartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bindLiveData()
-        bindClickListeners()
-    }
+        profileViewModel.cartItems.observe(viewLifecycleOwner) {
+            profileViewModel.updateCurrentCartItemList(it)
+            cartAdapter.setCartItems(it)
 
-    private fun bindLiveData() {
-//        menuViewModel.cartItems.observe(viewLifecycleOwner) {
-//            val productList = menuViewModel.getCurrentCartList(it)
-//            cartAdapter.setCartItems(it)
-//            if (productList.isEmpty()) {
-//                binding.cartEmptyTitle.visibility = View.VISIBLE
-//                binding.cartCheckoutBtn.visibility = View.INVISIBLE
-//                binding.cartGoForOrdersBtn.visibility = View.VISIBLE
-//            } else {
-//                binding.cartEmptyTitle.visibility = View.INVISIBLE
-//                binding.cartCheckoutBtn.visibility = View.VISIBLE
-//                binding.cartGoForOrdersBtn.visibility = View.INVISIBLE
-//            }
-//            binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
-//        }
+            binding.cartEmptyTitle.visibility = View.GONE
+            binding.cartGoForOrdersBtn.visibility = View.GONE
+            binding.cartCheckoutBtn.visibility = View.VISIBLE
+        }
+
+        binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
+
+        if (profileViewModel.currentCartItemList.isEmpty()) {
+            binding.cartCheckoutBtn.visibility = View.GONE
+            binding.cartEmptyTitle.visibility = View.VISIBLE
+        }
+        bindClickListeners()
     }
 
     private fun bindClickListeners() {
         cartAdapter.onCartClickListener = object : CartAdapter.OnCartClickListener {
-            override fun removeCartItem(productId: Int) {
-//                menuViewModel.removeCartItem(productId)
-                cartAdapter.removeCartItem(productId)
+            override fun removeCartItem(cartItem: CartItem) {
+                profileViewModel.deleteCartItem(cartItem)
             }
         }
         binding.cartGoForOrdersBtn.setOnClickListener {
             findNavController().popBackStack()
         }
         binding.cartCheckoutBtn.setOnClickListener {
-//            menuViewModel.clearCart()
-            Toast.makeText(activity, "Спасибо за заказ!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_navigation_cart_to_selectAddressFragment)
         }
     }
 }

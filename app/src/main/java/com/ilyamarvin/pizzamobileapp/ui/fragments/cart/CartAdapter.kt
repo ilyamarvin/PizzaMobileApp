@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.shop.cart
+package com.ilyamarvin.pizzamobileapp.ui.fragments.cart
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.ilyamarvin.pizzamobileapp.databinding.LayoutCartProductCardBinding
 
 class CartAdapter : RecyclerView.Adapter<CartAdapter.CartListViewHolder>() {
 
-    private val cartProductList = mutableListOf<CartItem>()
+    private val cartItemsList = ArrayList<CartItem>()
     lateinit var onCartClickListener: OnCartClickListener
 
     inner class CartListViewHolder(val binding: LayoutCartProductCardBinding) :
@@ -22,7 +22,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartListViewHolder>() {
         private val cartProductDeleteBtn = binding.cartProductDeleteBtn
         private val cartProductImage = binding.cartProductImageView
 
-        fun bind(cartItem: CartItem) {
+        fun bind(cartItem: CartItem, position: Int) {
 
             cartProductName.text = cartItem.product.name
             cartProductDesc.text = cartItem.product.description
@@ -33,7 +33,9 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartListViewHolder>() {
                 .into(cartProductImage)
 
             cartProductDeleteBtn.setOnClickListener {
-                onCartClickListener.removeItemFromCart(cartItem.product.id)
+                cartItemsList.removeAt(position)
+                notifyItemRemoved(position)
+                onCartClickListener.removeCartItem(cartItem)
             }
         }
     }
@@ -45,34 +47,28 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartListViewHolder>() {
         return CartListViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = cartProductList.size
+    override fun getItemCount(): Int = cartItemsList.size
 
     override fun onBindViewHolder(holder: CartListViewHolder, position: Int) {
-        holder.bind(cartProductList[position])
+        val cartItem = cartItemsList[position]
+        holder.bind(cartItem, position)
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setCartItems(cartItems: List<CartItem>) {
-        cartProductList.clear()
-        cartProductList.addAll(cartItems)
-
+        cartItemsList.clear()
+        cartItemsList.addAll(cartItems)
         notifyDataSetChanged()
     }
 
-    fun addCartItem(cartItem: CartItem) {
-        cartProductList.add(0, cartItem)
-
-        notifyItemInserted(0)
-    }
-
-    fun removeCartItem(productId: Int) {
-        cartProductList.removeAt(productId)
-
-        notifyItemRemoved(productId)
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearCart() {
+        cartItemsList.clear()
+        notifyDataSetChanged()
     }
 
     interface OnCartClickListener {
-        fun removeItemFromCart(productId: Int)
-//        fun changeQuantity(cartItem: CartItem, quantity: Int)
+        fun removeCartItem(cartItem: CartItem)
     }
 }

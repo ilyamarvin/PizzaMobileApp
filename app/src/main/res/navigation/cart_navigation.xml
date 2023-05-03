@@ -17,19 +17,19 @@
 
     <fragment
         android:id="@+id/selectAddressFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.cart.select_address.SelectAddressFragment"
-        android:label="fragment_select_address"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.cart.SelectAddressFragment"
         tools:layout="@layout/fragment_select_address" >
         <action
             android:id="@+id/action_selectAddressFragment_to_orderSuccessFragment"
             app:destination="@id/orderSuccessFragment"
+            app:popUpTo="@id/navigation_cart"
+            app:popUpToInclusive="true"
             />
     </fragment>
 
     <fragment
         android:id="@+id/orderSuccessFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.cart.order_success.OrderSuccessFragment"
-        android:label="fragment_order_success"
-        tools:layout="@layout/fragment_order_success" />
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.cart.SuccessFragment"
+        tools:layout="@layout/fragment_success" />
 
 </navigation>

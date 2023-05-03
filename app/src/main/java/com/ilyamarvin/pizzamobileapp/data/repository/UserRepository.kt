@@ -148,10 +148,10 @@ class UserRepository {
     }
 
     fun addOrder(
-        totalPrice: Int?,
+        totalPrice: Int,
         orderDate: String,
         address: Address,
-        orderProducts: HashMap<String, Int>
+        orderProducts: List<Product>
     ) {
 
         ref.child("order").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -210,11 +210,7 @@ class UserRepository {
     }
 
     fun addCartItem(
-        productId: Int,
-        name: String,
-        description: String,
-        price: Int,
-        image: String
+        product: Product
     ) {
 
         ref.child("cart").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -224,12 +220,12 @@ class UserRepository {
                     maxId++
 
                     val cartItem =
-                        CartItem(maxId, productId, name, description, price, image)
+                        CartItem(maxId, product)
 
                     ref.child("cart").child(maxId.toString()).setValue(cartItem)
                 } else {
                     val cartItem =
-                        CartItem(1, productId, name, description, price, image)
+                        CartItem(1, product)
 
                     ref.child("cart").child(1.toString()).setValue(cartItem)
                 }
