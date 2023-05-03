@@ -1,7 +1,5 @@
 package com.ilyamarvin.pizzamobileapp.data.repository
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -14,32 +12,28 @@ import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.data.model.Order
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.data.model.User
-import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.address.AddressesFragment
-import java.text.DateFormat
 
 class UserRepository {
 
-    private var liveData: MutableLiveData<User>? = null
+    private var userLiveData: MutableLiveData<User>? = null
 
     private var ref = FirebaseDatabase.getInstance().getReference("users")
         .child(FirebaseAuth.getInstance().currentUser!!.uid)
 
     fun getUserData(): LiveData<User> {
-        if (liveData == null) liveData = MutableLiveData()
+        if (userLiveData == null) userLiveData = MutableLiveData()
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val userData = snapshot.getValue(User::class.java)
-                    liveData!!.postValue(userData)
-                }
+                val userData = snapshot.getValue(User::class.java)
+                userLiveData!!.postValue(userData)
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        return liveData!!
+        return userLiveData!!
     }
 
     fun updateUserData(name: String?, email: String?) {
@@ -52,14 +46,11 @@ class UserRepository {
             .orderByChild("id")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        val addresses: List<Address> =
-                            snapshot.children.map { dataSnapshot ->
-                                dataSnapshot.getValue(Address::class.java)!!
-                            }
-                        addressLiveData.postValue(addresses)
-                    }
-
+                    val addresses: List<Address> =
+                        snapshot.children.map { dataSnapshot ->
+                            dataSnapshot.getValue(Address::class.java)!!
+                        }
+                    addressLiveData.postValue(addresses)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -131,14 +122,11 @@ class UserRepository {
             .orderByChild("id")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        val orders: List<Order> =
-                            snapshot.children.map { dataSnapshot ->
-                                dataSnapshot.getValue(Order::class.java)!!
-                            }
-                        orderLiveData.postValue(orders)
-                    }
-
+                    val orders: List<Order> =
+                        snapshot.children.map { dataSnapshot ->
+                            dataSnapshot.getValue(Order::class.java)!!
+                        }
+                    orderLiveData.postValue(orders)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -160,14 +148,11 @@ class UserRepository {
                     var maxId: Int = snapshot.childrenCount.toInt()
                     maxId++
 
-                    val order =
-                        Order(maxId, totalPrice, orderDate, address, orderProducts)
-
+                    val order = Order(maxId, totalPrice, orderDate, address, orderProducts)
                     ref.child("order").child(maxId.toString()).setValue(order)
-                } else {
-                    val order =
-                        Order(1, totalPrice, orderDate, address, orderProducts)
 
+                } else {
+                    val order = Order(1, totalPrice, orderDate, address, orderProducts)
                     ref.child("order").child(1.toString()).setValue(order)
                 }
             }
@@ -175,7 +160,6 @@ class UserRepository {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 
@@ -185,14 +169,11 @@ class UserRepository {
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    if (snapshot.exists()) {
-                        val cartProductItems: List<CartItem> =
-                            snapshot.children.map { dataSnapshot ->
-                                dataSnapshot.getValue(CartItem::class.java)!!
-                            }
-                        cartProductLiveData.postValue(cartProductItems)
-                    }
-
+                    val cartProductItems: List<CartItem> =
+                        snapshot.children.map { dataSnapshot ->
+                            dataSnapshot.getValue(CartItem::class.java)!!
+                        }
+                    cartProductLiveData.postValue(cartProductItems)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -209,9 +190,7 @@ class UserRepository {
         ref.child("cart").removeValue()
     }
 
-    fun addCartItem(
-        product: Product
-    ) {
+    fun addCartItem(product: Product) {
 
         ref.child("cart").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -219,13 +198,11 @@ class UserRepository {
                     var maxId: Int = snapshot.childrenCount.toInt()
                     maxId++
 
-                    val cartItem =
-                        CartItem(maxId, product)
+                    val cartItem = CartItem(maxId, product)
 
                     ref.child("cart").child(maxId.toString()).setValue(cartItem)
                 } else {
-                    val cartItem =
-                        CartItem(1, product)
+                    val cartItem = CartItem(1, product)
 
                     ref.child("cart").child(1.toString()).setValue(cartItem)
                 }

@@ -17,7 +17,7 @@ class ProfileViewModel : ViewModel() {
     private val _address = MutableLiveData<List<Address>>()
     val address: LiveData<List<Address>> = _address
 
-    var currentAddressList = mutableListOf<Address>()
+    var currentAddressList = emptyList<Address>()
 
     private val _order = MutableLiveData<List<Order>>()
     val order: LiveData<List<Order>> = _order
@@ -54,8 +54,7 @@ class ProfileViewModel : ViewModel() {
     }
 
     fun updateCurrentAddressList(addressList: List<Address>) {
-        currentAddressList.clear()
-        currentAddressList.addAll(addressList)
+        currentAddressList = addressList
     }
 
     fun updateAddress(
