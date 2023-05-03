@@ -1,5 +1,7 @@
 package com.ilyamarvin.pizzamobileapp.data.repository
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -10,6 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.ilyamarvin.pizzamobileapp.data.model.Address
 import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.data.model.User
+import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.address.AddressesFragment
 
 class UserRepository {
 
@@ -41,35 +44,6 @@ class UserRepository {
         ref.updateChildren(map)
     }
 
-    fun addAddress(
-        street: String?,
-        apartment: Int?,
-        floor: Int?,
-        entrance: Int?,
-        intercom: Int?,
-        comment: String?
-    ) {
-
-        var maxId: Int = 1
-
-        ref.child("address").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    maxId = snapshot.childrenCount.toInt()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-
-        val address = Address(maxId, street!!, apartment, floor, entrance, intercom, comment)
-
-        ref.child("address").child(maxId.toString()).setValue(address)
-    }
-
     fun getAddresses(addressLiveData: MutableLiveData<List<Address>>) {
         ref.child("address")
             .orderByChild("id")
@@ -90,6 +64,64 @@ class UserRepository {
                     TODO("Not yet implemented")
                 }
             })
+    }
+
+    fun addAddress(
+        street: String?,
+        apartment: Int?,
+        floor: Int?,
+        entrance: Int?,
+        intercom: Int?,
+        comment: String?
+    ) {
+
+        ref.child("address").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    var maxId: Int = snapshot.childrenCount.toInt()
+                    maxId++
+
+                    val address =
+                        Address(maxId, street!!, apartment, floor, entrance, intercom, comment)
+
+                    ref.child("address").child(maxId.toString()).setValue(address)
+                } else {
+                    val address =
+                        Address(1, street!!, apartment, floor, entrance, intercom, comment)
+
+                    ref.child("address").child(1.toString()).setValue(address)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun updateAddress(
+        id: Int?,
+        street: String?,
+        apartment: Int?,
+        floor: Int?,
+        entrance: Int?,
+        intercom: Int?,
+        comment: String?
+    ) {
+        val map = mapOf<String, Any>(
+            "street" to street!!,
+            "apartment" to apartment!!,
+            "floor" to floor!!,
+            "entrance" to entrance!!,
+            "intercom" to intercom!!,
+            "comment" to comment!!
+        )
+        ref.child("address").child(id.toString()).updateChildren(map)
+    }
+
+    fun deleteAddress(id: Int?) {
+        ref.child("address").child(id.toString()).removeValue()
     }
 
     fun getUserCart(cartProductLiveData: MutableLiveData<List<CartItem>>) {

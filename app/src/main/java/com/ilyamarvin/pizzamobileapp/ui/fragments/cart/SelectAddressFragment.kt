@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.cart.select_address
+package com.ilyamarvin.pizzamobileapp.ui.fragments.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater

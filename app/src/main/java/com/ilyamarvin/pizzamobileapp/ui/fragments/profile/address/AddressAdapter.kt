@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ilyamarvin.pizzamobileapp.data.model.Address
+import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.databinding.LayoutAddressCardBinding
 
 class AddressAdapter : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
 
-    private var addressList = emptyList<Address>()
+    private var addressList = ArrayList<Address>()
     lateinit var onAddressClickListener: OnAddressClickListener
 
     inner class AddressViewHolder(val binding: LayoutAddressCardBinding) :
@@ -47,13 +48,23 @@ class AddressAdapter : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() 
 
         val address = addressList[position]
         holder.bind(address)
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setAddressData(addressItemList: List<Address>) {
-        addressList = addressItemList
-        notifyDataSetChanged()
+        addressList.addAll(addressItemList)
 
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun deleteAddress(position: Int) {
+        addressList.removeAt(position)
+
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, addressList.size)
+        notifyDataSetChanged()
     }
 
     interface OnAddressClickListener {

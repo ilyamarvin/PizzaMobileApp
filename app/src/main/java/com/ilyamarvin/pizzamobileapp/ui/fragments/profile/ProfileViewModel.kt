@@ -37,7 +37,7 @@ class ProfileViewModel : ViewModel() {
 
     fun getAddress(id: Int): Address {
         return currentAddressList.first {
-            it.id.toInt() == id
+            it.id == id
         }
     }
 
@@ -45,7 +45,19 @@ class ProfileViewModel : ViewModel() {
         currentAddressList = addressList
     }
 
-    fun AddAddress(
+    fun updateAddress(
+        id: Int?,
+        street: String?,
+        apartment: Int?,
+        floor: Int?,
+        entrance: Int?,
+        intercom: Int?,
+        comment: String?
+    ) {
+        userRepository.updateAddress(id, street, apartment, floor, entrance, intercom, comment)
+    }
+
+    fun addAddress(
         street: String?,
         apartment: Int?,
         floor: Int?,
@@ -54,6 +66,10 @@ class ProfileViewModel : ViewModel() {
         comment: String?
     ) {
         userRepository.addAddress(street, apartment, floor, entrance, intercom, comment)
+    }
+
+    fun deleteAddress(id: Int?) {
+        userRepository.deleteAddress(id)
     }
 
 

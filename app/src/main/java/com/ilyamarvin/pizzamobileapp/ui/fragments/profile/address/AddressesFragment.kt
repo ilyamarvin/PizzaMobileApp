@@ -46,6 +46,7 @@ class AddressesFragment : Fragment() {
         }
 
         if (profileViewModel.currentAddressList.isEmpty()) {
+            binding.addressesEmpty.visibility = View.VISIBLE
             binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         }
 
@@ -59,13 +60,17 @@ class AddressesFragment : Fragment() {
             }
 
             override fun onAddressDeleteClick(address: Address) {
-                Toast.makeText(context, "Типа удалил хы", Toast.LENGTH_LONG).show()
+
+                profileViewModel.deleteAddress(address.id)
+                addressAdapter.deleteAddress(address.id-1)
             }
 
         }
 
         binding.addressesBtnAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_deliveryAddressesFragment_to_addEditAddressFragment)
+            findNavController().navigate(AddressesFragmentDirections.actionDeliveryAddressesFragmentToAddEditAddressFragment(
+                0
+            ))
         }
     }
 
