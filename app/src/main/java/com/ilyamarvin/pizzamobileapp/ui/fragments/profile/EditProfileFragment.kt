@@ -41,9 +41,10 @@ class EditProfileFragment : Fragment() {
             binding.registrationDayBirthdateEditProfile.editText!!.setText(birthdate[0])
             binding.registrationMonthBirthdateEditProfile.editText!!.setText(birthdate[1])
             binding.registrationYearBirthdateEditProfile.editText!!.setText(birthdate[2])
+
+            binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         }
 
-        binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
 
         binding.confirmEditProfileButton.setOnClickListener {
             profileViewModel.updateUserData(

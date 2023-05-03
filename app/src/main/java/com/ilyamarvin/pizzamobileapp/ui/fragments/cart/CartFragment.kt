@@ -42,16 +42,16 @@ class CartFragment : Fragment() {
             profileViewModel.updateCurrentCartItemList(it)
             cartAdapter.setCartItems(it)
 
-            binding.cartEmptyTitle.visibility = View.GONE
-            binding.cartGoForOrdersBtn.visibility = View.GONE
-            binding.cartCheckoutBtn.visibility = View.VISIBLE
-        }
-
-        binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
-
-        if (profileViewModel.currentCartItemList.isEmpty()) {
-            binding.cartCheckoutBtn.visibility = View.GONE
-            binding.cartEmptyTitle.visibility = View.VISIBLE
+            if (profileViewModel.currentCartItemList.isEmpty()) {
+                binding.cartEmptyTitle.visibility = View.VISIBLE
+                binding.cartGoForOrdersBtn.visibility = View.VISIBLE
+                binding.cartCheckoutBtn.visibility = View.GONE
+            } else {
+                binding.cartEmptyTitle.visibility = View.GONE
+                binding.cartGoForOrdersBtn.visibility = View.GONE
+                binding.cartCheckoutBtn.visibility = View.VISIBLE
+            }
+            binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         }
         bindClickListeners()
     }

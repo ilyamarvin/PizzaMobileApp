@@ -39,12 +39,11 @@ class AddressesFragment : Fragment() {
             profileViewModel.updateCurrentAddressList(it)
             addressAdapter.setAddressData(it)
 
-            binding.addressesEmpty.visibility = View.GONE
-            binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
-        }
-
-        if (profileViewModel.currentAddressList.isEmpty()) {
-            binding.addressesEmpty.visibility = View.VISIBLE
+            if (profileViewModel.currentAddressList.isEmpty()) {
+                binding.addressesEmpty.visibility = View.VISIBLE
+            } else {
+                binding.addressesEmpty.visibility = View.GONE
+            }
             binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         }
 

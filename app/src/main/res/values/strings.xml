@@ -94,6 +94,7 @@
     <string name="title_activity_login">Вход в профиль</string>
     <string name="title_activity_registration">Регистрация в приложении</string>
     <string name="title_activity_confirmation">Подтверждение номера телефона</string>
+    <string name="addresses_empty_desc">Перейдите в профиль и добавьте адрес доставки</string>
 
 
 </resources>

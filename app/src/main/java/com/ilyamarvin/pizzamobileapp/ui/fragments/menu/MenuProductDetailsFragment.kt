@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentProductDetailsBinding
+import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.ProfileViewModel
 
 class MenuProductDetailsFragment : Fragment() {
 
@@ -20,6 +21,7 @@ class MenuProductDetailsFragment : Fragment() {
     private val args by navArgs<MenuProductDetailsFragmentArgs>()
 
     private val menuViewModel: MenuViewModel by activityViewModels()
+    private val profileViewModel: ProfileViewModel by activityViewModels()
 
     private var productId = 0
 
@@ -54,7 +56,7 @@ class MenuProductDetailsFragment : Fragment() {
 
     private fun bindAddProductButton(product: Product) {
         binding.addProductDetailsToCartBtn.setOnClickListener {
-//            menuViewModel.addProductToCart(product)
+            profileViewModel.addCartItem(product)
             Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_LONG)
                 .show()
             this.findNavController().popBackStack()

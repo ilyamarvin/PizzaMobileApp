@@ -42,12 +42,11 @@ class OrdersFragment : Fragment() {
             profileViewModel.updateCurrentOrderItemList(it)
             ordersAdapter.setOrdersData(it)
 
-            binding.ordersEmptyTv.visibility = View.GONE
-            binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
-        }
-
-        if (profileViewModel.currentOrderList.isEmpty()) {
-            binding.ordersEmptyTv.visibility = View.VISIBLE
+            if (profileViewModel.currentOrderList.isEmpty()) {
+                binding.ordersEmptyTv.visibility = View.VISIBLE
+            } else {
+                binding.ordersEmptyTv.visibility = View.GONE
+            }
             binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
         }
     }

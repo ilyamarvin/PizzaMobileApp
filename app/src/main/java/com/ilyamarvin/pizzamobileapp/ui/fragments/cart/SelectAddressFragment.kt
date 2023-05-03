@@ -47,10 +47,16 @@ class SelectAddressFragment : Fragment() {
             profileViewModel.updateCurrentAddressList(it)
             selectAddressAdapter.setAddressData(it)
 
+            if (profileViewModel.currentAddressList.isEmpty()) {
+                binding.addressesEmpty.visibility = View.VISIBLE
+                binding.addressesEmptyDesc.visibility = View.VISIBLE
+            } else {
+                binding.addressesEmpty.visibility = View.GONE
+                binding.addressesEmptyDesc.visibility = View.GONE
+            }
         }
 
         binding.loaderLayout.loaderFrameLayout.visibility = View.GONE
-        binding.addressesEmpty.visibility = View.GONE
 
         selectAddressAdapter.onSelectAddressClickListener =
             object : SelectAddressAdapter.OnSelectAddressClickListener {
