@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.databinding.FragmentMenuBinding
 import com.ilyamarvin.pizzamobileapp.data.model.Product
+import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.ProfileViewModel
 
 class MenuFragment : Fragment() {
 
@@ -19,6 +21,7 @@ class MenuFragment : Fragment() {
     private lateinit var menuAdapter: MenuAdapter
 
     private val menuViewModel: MenuViewModel by activityViewModels()
+    private val profileViewModel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,11 +58,15 @@ class MenuFragment : Fragment() {
             }
 
             override fun onAddToCartClick(product: Product) {
-//                menuViewModel.addProductToCart(product.id)
-
-                Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_SHORT)
-                    .show()
+                TODO("Not yet implemented")
             }
+
+//            override fun onAddToCartClick(cartItem: CartItem) {
+//                Toast.makeText(context, "hello", Toast.LENGTH_LONG).show()
+////                profileViewModel.addCartItem(cartItem.id)
+//
+//                Toast.makeText(activity, "${product.name} добавлена в корзину", Toast.LENGTH_SHORT)
+//                    .show()
         }
     }
 }

@@ -5,34 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ilyamarvin.pizzamobileapp.data.model.Address
-import com.ilyamarvin.pizzamobileapp.data.model.CartItem
 import com.ilyamarvin.pizzamobileapp.databinding.LayoutAddressCardBinding
 
 class AddressAdapter : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
 
-    private var addressList = ArrayList<Address>()
+    private var addressList = mutableListOf<Address>()
+
     lateinit var onAddressClickListener: OnAddressClickListener
 
-    inner class AddressViewHolder(val binding: LayoutAddressCardBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        private val textAddress = binding.completeAddressTv
-        private val addressCard = binding.addressCard
-        private val deleteAddressBtn = binding.addressDeleteBtn
-
-        fun bind(address: Address) {
-
-            textAddress.text = address.street
-
-            addressCard.setOnClickListener {
-                onAddressClickListener.onAddressClick(address)
-            }
-
-            deleteAddressBtn.setOnClickListener {
-                onAddressClickListener.onAddressDeleteClick(address)
-            }
-        }
-    }
+    class AddressViewHolder(val binding: LayoutAddressCardBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
         val binding = LayoutAddressCardBinding.inflate(
@@ -47,23 +29,25 @@ class AddressAdapter : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
         val address = addressList[position]
-        holder.bind(address)
+
+        holder.binding.completeAddressTv.text = address.street
+
+        holder.binding.addressCard.setOnClickListener {
+            onAddressClickListener.onAddressClick(address)
+        }
+
+        holder.binding.addressDeleteBtn.setOnClickListener {
+            addressList.removeAt(position)
+            notifyItemRemoved(position)
+            onAddressClickListener.onAddressDeleteClick(address)
+        }
 
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setAddressData(addressItemList: List<Address>) {
+        addressList.clear()
         addressList.addAll(addressItemList)
-
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun deleteAddress(position: Int) {
-        addressList.removeAt(position)
-
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, addressList.size)
         notifyDataSetChanged()
     }
 

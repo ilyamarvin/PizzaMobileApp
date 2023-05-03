@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/orderHistoryFragment"
-        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.OrderHistoryFragment"
+        android:name="com.ilyamarvin.pizzamobileapp.ui.fragments.profile.orders.OrdersFragment"
         android:label="@string/order_history_text"
         tools:layout="@layout/fragment_order_history" />
 

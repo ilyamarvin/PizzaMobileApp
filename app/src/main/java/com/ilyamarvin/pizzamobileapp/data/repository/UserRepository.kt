@@ -11,8 +11,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.ilyamarvin.pizzamobileapp.data.model.Address
 import com.ilyamarvin.pizzamobileapp.data.model.CartItem
+import com.ilyamarvin.pizzamobileapp.data.model.Order
+import com.ilyamarvin.pizzamobileapp.data.model.Product
 import com.ilyamarvin.pizzamobileapp.data.model.User
 import com.ilyamarvin.pizzamobileapp.ui.fragments.profile.address.AddressesFragment
+import java.text.DateFormat
 
 class UserRepository {
 
@@ -49,7 +52,6 @@ class UserRepository {
             .orderByChild("id")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     if (snapshot.exists()) {
                         val addresses: List<Address> =
                             snapshot.children.map { dataSnapshot ->
@@ -124,7 +126,60 @@ class UserRepository {
         ref.child("address").child(id.toString()).removeValue()
     }
 
-    fun getUserCart(cartProductLiveData: MutableLiveData<List<CartItem>>) {
+    fun getOrders(orderLiveData: MutableLiveData<List<Order>>) {
+        ref.child("order")
+            .orderByChild("id")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val orders: List<Order> =
+                            snapshot.children.map { dataSnapshot ->
+                                dataSnapshot.getValue(Order::class.java)!!
+                            }
+                        orderLiveData.postValue(orders)
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+    }
+
+    fun addOrder(
+        totalPrice: Int?,
+        orderDate: String,
+        address: Address,
+        orderProducts: HashMap<String, Int>
+    ) {
+
+        ref.child("order").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    var maxId: Int = snapshot.childrenCount.toInt()
+                    maxId++
+
+                    val order =
+                        Order(maxId, totalPrice, orderDate, address, orderProducts)
+
+                    ref.child("order").child(maxId.toString()).setValue(order)
+                } else {
+                    val order =
+                        Order(1, totalPrice, orderDate, address, orderProducts)
+
+                    ref.child("order").child(1.toString()).setValue(order)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun getCartItems(cartProductLiveData: MutableLiveData<List<CartItem>>) {
         ref.child("cart")
             .orderByChild("id")
             .addValueEventListener(object : ValueEventListener {
@@ -144,5 +199,46 @@ class UserRepository {
                     TODO("Not yet implemented")
                 }
             })
+    }
+
+    fun deleteCartItem(id: Int?) {
+        ref.child("cart").child(id.toString()).removeValue()
+    }
+
+    fun clearCart() {
+        ref.child("cart").removeValue()
+    }
+
+    fun addCartItem(
+        productId: Int,
+        name: String,
+        description: String,
+        price: Int,
+        image: String
+    ) {
+
+        ref.child("cart").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    var maxId: Int = snapshot.childrenCount.toInt()
+                    maxId++
+
+                    val cartItem =
+                        CartItem(maxId, productId, name, description, price, image)
+
+                    ref.child("cart").child(maxId.toString()).setValue(cartItem)
+                } else {
+                    val cartItem =
+                        CartItem(1, productId, name, description, price, image)
+
+                    ref.child("cart").child(1.toString()).setValue(cartItem)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

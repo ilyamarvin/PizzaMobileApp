@@ -1,4 +1,4 @@
-package com.ilyamarvin.pizzamobileapp.ui.fragments.cart.order_success
+package com.ilyamarvin.pizzamobileapp.ui.fragments.cart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

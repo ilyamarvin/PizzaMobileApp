@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:clickable="true"
-    android:focusable="true"
     app:cardCornerRadius="20dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/gray"
@@ -23,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="11sp"
+            android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@+id/order_date_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,24 +57,24 @@
             android:id="@+id/order_delivery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="11sp"
+            android:text="@string/order_delivery"
+            android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@id/order_delivery_address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_1"
-            tools:text="@string/order_delivery" />
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_1" />
 
         <TextView
             android:id="@+id/order_delivery_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="г. Москва, ул. Кукуева, д. 25 "
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_delivery"
-            tools:text="г. Москва, ул. Кукуева, д. 25 " />
+            app:layout_constraintTop_toBottomOf="@id/order_delivery" />
 
         <ImageView
             android:id="@+id/order_card_dotted_divider_2"
@@ -94,19 +92,19 @@
             android:id="@+id/order_position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="11sp"
+            android:text="@string/order_position"
+            android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@id/order_positions_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_2"
-            tools:text="@string/order_position" />
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_2" />
 
         <TextView
             android:id="@+id/order_positions_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,20 +127,20 @@
             android:id="@+id/order_sum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@string/order_sum"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_4"
             app:layout_constraintEnd_toStartOf="@id/order_sum_number"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_3"
-            tools:text="@string/order_sum" />
+            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_3" />
 
         <TextView
             android:id="@+id/order_sum_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/order_card_dotted_divider_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/order_sum"
@@ -160,19 +158,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/order_sum" />
 
-        <Button
-            android:id="@+id/order_repeat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_4"
-            tools:text="@string/order_repeat" />
+        <!--        <Button-->
+        <!--            android:id="@+id/order_repeat"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="5dp"-->
+        <!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+        <!--            android:textSize="14sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/order_card_dotted_divider_4"-->
+        <!--            tools:text="@string/order_repeat" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
